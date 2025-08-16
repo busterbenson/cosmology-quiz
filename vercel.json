@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "server/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/data/(.*)",
