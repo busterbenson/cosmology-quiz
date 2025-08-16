@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
+    @apply text-white min-h-screen;
+  }
+}
+
+@layer components {
+  .cosmic-card {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 shadow-xl;
+  }
+  
+  .cosmic-button {
+    @apply bg-gradient-to-r from-cosmic-blue to-cosmic-purple hover:from-cosmic-purple hover:to-cosmic-blue;
+    @apply text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200;
+    @apply shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+  
+  .cosmic-button-secondary {
+    @apply border border-white/30 text-white hover:bg-white/10;
+    @apply font-semibold py-2 px-4 rounded-lg transition-all duration-200;
+  }
+  
+  .dot-visualization {
+    @apply font-mono text-lg tracking-wider;
+  }
+}

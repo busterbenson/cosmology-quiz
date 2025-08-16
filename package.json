@@ -1,0 +1,22 @@
+{
+  "name": "cosmology-quiz",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/types": "^2.18.1",
+    "nuxt": "^3.14.159"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@nuxtjs/vercel-builder": "^0.24.0",
+    "@pinia/nuxt": "^0.8.0",
+    "pinia": "^2.3.0"
+  }
+}
