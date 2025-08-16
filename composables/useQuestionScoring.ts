@@ -186,11 +186,11 @@ export const useQuestionScoring = () => {
         
         // Boost core skeptical/agnostic cosmologies for "don't know" answers
         if (coreSkepticalCosmologies.has(cosmologyName)) {
-          newScores[i] += 7 // Strong boost for philosophies that embrace epistemic humility
+          newScores[i] += 4 // Moderate boost for philosophies that embrace epistemic humility
         }
         // Also boost all other cosmologies that are "comfortable with uncertainty"
         else if (cosmology['Comfortable with uncertainty'] === 'R') {
-          newScores[i] += 3 // Smaller boost for uncertainty-friendly worldviews
+          newScores[i] += 2 // Smaller boost for uncertainty-friendly worldviews
         }
         // Apply small penalty to cosmologies that require definite beliefs on this topic
         else if (relation === 'R') {
