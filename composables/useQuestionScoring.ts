@@ -169,12 +169,12 @@ export const useQuestionScoring = () => {
     const eliminated: Array<{name: string, category: string}> = []
     const newScores = [...scores]
 
-    // Define skeptical/agnostic cosmologies that benefit from uncertainty
-    const skepticalCosmologies = new Set([
+    // Define core skeptical/agnostic cosmologies that embrace uncertainty
+    // These cosmologies both require uncertainty comfort AND represent skeptical/agnostic worldviews
+    const coreSkepticalCosmologies = new Set([
       'Mystical Agnosticism', 'Epistemological Agnosticism', 'Open Skeptic', 
-      'Modern Matrix Skepticism', 'Perpetual Inquiry', 'Transitional Seeking',
-      'Philosophical Spirituality', 'Pragmatic Spirituality', 'Many-Sided Reality',
-      'Alternative Physics Explorer', 'Conspiracy Analyst', 'Hidden History Researcher'
+      'Perpetual Inquiry', 'Transitional Seeking', 'Philosophical Spirituality', 
+      'Pragmatic Spirituality'
     ])
 
     if (answer === '?') {
@@ -184,11 +184,11 @@ export const useQuestionScoring = () => {
         const cosmologyName = cosmology.Cosmology
         const relation = cosmology[questionKey]
         
-        // Boost skeptical/agnostic cosmologies for "don't know" answers
-        if (skepticalCosmologies.has(cosmologyName)) {
-          newScores[i] += 5 // Moderate boost for embracing uncertainty
+        // Boost core skeptical/agnostic cosmologies for "don't know" answers
+        if (coreSkepticalCosmologies.has(cosmologyName)) {
+          newScores[i] += 7 // Strong boost for philosophies that embrace epistemic humility
         }
-        // Also boost cosmologies that are "comfortable with uncertainty"
+        // Also boost all other cosmologies that are "comfortable with uncertainty"
         else if (cosmology['Comfortable with uncertainty'] === 'R') {
           newScores[i] += 3 // Smaller boost for uncertainty-friendly worldviews
         }
