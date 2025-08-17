@@ -37,13 +37,28 @@
             <div class="bg-gradient-to-r from-cosmic-blue/20 to-cosmic-purple/20 rounded-lg p-4 border border-cosmic-gold/30">
               <div class="flex justify-between items-start mb-2">
                 <div class="flex-1">
-                  <h2 class="text-xl font-bold text-white">{{ results[0].cosmology }}</h2>
-                  <p class="text-cosmic-gold text-sm">{{ results[0].category }}</p>
+                  <div class="flex items-center gap-2">
+                    <h2 class="text-xl font-bold text-white">{{ displayResults[0].cosmology }}</h2>
+                    <button 
+                      @click="toggleFavorite(displayResults[0].cosmology)"
+                      class="heart-button transition-all duration-300 hover:scale-110"
+                      :class="{
+                        'heart-active': favoriteCosmology === displayResults[0].cosmology,
+                        'heart-pulse': favoriteCosmology === displayResults[0].cosmology
+                      }"
+                      title="Mark as favorite"
+                    >
+                      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="text-cosmic-gold text-sm">{{ displayResults[0].category }}</p>
                 </div>
-                <span class="text-cosmic-gold font-bold text-lg">{{ results[0].score }}</span>
+                <span class="text-cosmic-gold font-bold text-lg">{{ displayResults[0].score }}</span>
               </div>
               <p class="text-gray-300 text-sm leading-relaxed">
-                {{ quizEngine.summaries.value[results[0].cosmology] || `A ${results[0].category} worldview` }}
+                {{ quizEngine.summaries.value[displayResults[0].cosmology] || `A ${displayResults[0].category} worldview` }}
               </p>
             </div>
             
@@ -51,10 +66,25 @@
             <div>
               <h3 class="text-lg font-bold text-white mb-3">Other Top Matches</h3>
               <div class="space-y-2">
-                <div v-for="(result, index) in results.slice(1, 5)" :key="result.cosmology" 
+                <div v-for="(result, index) in displayResults.slice(1)" :key="result.cosmology" 
                      class="bg-white/5 rounded px-3 py-2.5">
                   <div class="flex justify-between items-start mb-1">
-                    <span class="text-white font-medium text-sm">{{ index + 2 }}. {{ result.cosmology }}</span>
+                    <div class="flex items-center gap-2 flex-1">
+                      <span class="text-white font-medium text-sm">{{ getDisplayRank(result, index) }}. {{ result.cosmology }}</span>
+                      <button 
+                        @click="toggleFavorite(result.cosmology)"
+                        class="heart-button heart-small transition-all duration-300 hover:scale-110"
+                        :class="{
+                          'heart-active': favoriteCosmology === result.cosmology,
+                          'heart-pulse': favoriteCosmology === result.cosmology
+                        }"
+                        title="Mark as favorite"
+                      >
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                      </button>
+                    </div>
                     <span class="text-cosmic-gold font-bold text-sm ml-3">{{ result.score }}</span>
                   </div>
                   <div class="text-xs text-gray-400 mb-1">{{ result.category }}</div>
@@ -69,7 +99,7 @@
             <div v-if="leastCompatibleResult">
               <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
                 <div class="flex justify-between items-start mb-1">
-                  <h3 class="text-sm font-bold text-red-400">📍 Least Compatible</h3>
+                  <h3 class="text-sm font-bold text-red-400">🚫 Your Anti-Cosmology</h3>
                   <span class="text-red-400 font-bold text-sm">{{ leastCompatibleResult.score }}</span>
                 </div>
                 <div class="text-xs text-red-200/70 mb-1">{{ leastCompatibleResult.category }}</div>
@@ -128,10 +158,33 @@
             <button @click="shareResults" class="cosmic-button-secondary">
               Share Results
             </button>
+            <button @click="copyPermalink" class="cosmic-button-outline">
+              Copy Permalink
+            </button>
           </div>
           
           <div class="text-sm text-gray-400">
             Results based on {{ quizEngine.quizState.value.questionNumber }} questions
+          </div>
+          
+          <!-- Permalink Display -->
+          <div v-if="showPermalink" class="mt-6 p-4 bg-white/5 rounded-lg border border-cosmic-gold/30">
+            <div class="text-sm text-gray-300 mb-2">Permalink to your results:</div>
+            <div class="flex items-center gap-2">
+              <input 
+                ref="permalinkInput"
+                :value="generatePermalink()" 
+                readonly 
+                class="flex-1 px-3 py-2 bg-white/10 border border-gray-600 rounded text-sm text-white"
+                @click="selectPermalinkText"
+              />
+              <button 
+                @click="copyPermalinkToClipboard" 
+                class="px-3 py-2 bg-cosmic-purple hover:bg-cosmic-purple/80 rounded text-sm text-white transition-colors"
+              >
+                Copy
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -159,6 +212,9 @@ const quizEngine = useQuizEngine()
 const isLoading = ref(true)
 const error = ref<string | null>(null)
 const results = ref<any[]>([])
+const favoriteCosmology = ref<string | null>(null)
+const showPermalink = ref(false)
+const permalinkInput = ref<HTMLInputElement | null>(null)
 
 // Computed properties for conviction profile ordering and visualization
 const maxConvictionStrength = computed(() => {
@@ -181,16 +237,137 @@ const orderedConvictionProfile = computed(() => {
   return items.sort((a, b) => b.netScore - a.netScore)
 })
 
-const leastCompatibleResult = computed(() => {
-  if (results.value.length === 0) return null
+// Reorder results to put favorite first if selected
+const displayResults = computed(() => {
+  if (!favoriteCosmology.value || results.value.length === 0) {
+    return results.value.slice(0, 5)
+  }
   
-  // Get all results from the quiz engine (not just top matches)
-  const allResults = quizEngine.getResults()
-  if (allResults.length === 0) return null
+  const top5 = results.value.slice(0, 5)
+  const favoriteIndex = top5.findIndex(r => r.cosmology === favoriteCosmology.value)
   
-  // Find the one with the lowest score
-  return allResults[allResults.length - 1] // Results are sorted by score desc, so last is lowest
+  if (favoriteIndex === -1 || favoriteIndex === 0) {
+    return top5 // Favorite not in top 5 or already first
+  }
+  
+  // Move favorite to first position
+  const reordered = [...top5]
+  const favorite = reordered.splice(favoriteIndex, 1)[0]
+  reordered.unshift(favorite)
+  
+  return reordered
 })
+
+const leastCompatibleResult = computed(() => {
+  if (!quizEngine.isInitialized.value) return null
+  
+  // Get ALL cosmologies and their scores (including eliminated ones)
+  const allCosmologies = quizEngine.cosmologies.value
+  const allScores = quizEngine.quizState.value.scores
+  
+  if (allCosmologies.length === 0 || allScores.length === 0) return null
+  
+  // Find all cosmologies with the absolute lowest score
+  const lowestScore = Math.min(...allScores)
+  const tiedCosmologies = []
+  
+  for (let i = 0; i < allCosmologies.length; i++) {
+    if (allScores[i] === lowestScore) {
+      tiedCosmologies.push({
+        cosmology: allCosmologies[i].Cosmology,
+        category: allCosmologies[i].Category,
+        score: allScores[i],
+        index: i
+      })
+    }
+  }
+  
+  if (tiedCosmologies.length === 0) return null
+  if (tiedCosmologies.length === 1) return tiedCosmologies[0]
+  
+  // Clever tie-breaking for eliminated cosmologies (-1000 score)
+  // Strategy: Find the one that was eliminated EARLIEST (most fundamentally incompatible)
+  const sessionAnswers = quizEngine.quizState.value.sessionAnswers
+  
+  for (const answer of sessionAnswers) {
+    const eliminated = answer.eliminated || []
+    for (const elim of eliminated) {
+      const tieCandidate = tiedCosmologies.find(t => t.cosmology === elim.name)
+      if (tieCandidate) {
+        // Found the earliest eliminated - this is the most fundamentally anti-compatible
+        return tieCandidate
+      }
+    }
+  }
+  
+  // Fallback: if no elimination history found, use other tie-breakers
+  // 1. Prefer cosmologies from more "extreme" categories (Religious vs Secular, etc.)
+  // 2. Alphabetical as final resort
+  const categoryPriority = {
+    'Religious': 3,
+    'Secular': 3, 
+    'Scientific': 2,
+    'Philosophical': 1,
+    'Cultural': 1
+  }
+  
+  tiedCosmologies.sort((a, b) => {
+    const aPriority = categoryPriority[a.category] || 0
+    const bPriority = categoryPriority[b.category] || 0
+    if (aPriority !== bPriority) return bPriority - aPriority
+    return a.cosmology.localeCompare(b.cosmology)
+  })
+  
+  return tiedCosmologies[0]
+})
+
+const reconstructQuizFromPermalink = async (answersParam: string) => {
+  try {
+    // Decode answer string: Y=Y, N=N, U=? (uncertain)
+    const answers = answersParam.split('').map(char => {
+      switch (char.toUpperCase()) {
+        case 'Y': return 'Y'
+        case 'N': return 'N'
+        case 'U': return '?'
+        // Legacy support for old format
+        case '1': return 'Y'
+        case '0': return 'N'
+        case '2': return '?'
+        default: return 'N'
+      }
+    })
+    
+    // Clear any existing quiz state
+    quizEngine.quizState.value.scores = new Array(quizEngine.cosmologies.value.length).fill(0)
+    quizEngine.quizState.value.askedQuestions = ['Order', 'Category', 'Cosmology']
+    quizEngine.quizState.value.sessionAnswers = []
+    quizEngine.quizState.value.convictionProfile = {}
+    quizEngine.quizState.value.askedConcepts = new Set()
+    quizEngine.quizState.value.dontKnowCount = 0
+    quizEngine.quizState.value.questionNumber = 0
+    quizEngine.quizState.value.questionHistory = []
+    
+    // Simulate the quiz by answering each question in sequence
+    for (let i = 0; i < answers.length; i++) {
+      const answer = answers[i]
+      
+      // Find the next question using the quiz engine logic
+      const nextQuestionFound = await quizEngine.findNextQuestion()
+      if (!nextQuestionFound || !quizEngine.currentQuestion.value) {
+        console.warn(`Could not find question ${i + 1} during permalink reconstruction`)
+        break
+      }
+      
+      // Answer the current question
+      await quizEngine.answerQuestion(answer)
+    }
+    
+    console.log(`Reconstructed quiz state from permalink with ${answers.length} answers`)
+  } catch (err) {
+    console.error('Error reconstructing quiz from permalink:', err)
+    throw err
+  }
+}
 
 onMounted(async () => {
   try {
@@ -201,6 +378,15 @@ onMounted(async () => {
         error.value = 'Failed to initialize quiz engine'
         return
       }
+    }
+
+    // Check for permalink answers in URL
+    const route = useRoute()
+    const answersParam = route.query.answers as string
+    
+    if (answersParam) {
+      // Reconstruct quiz state from permalink
+      await reconstructQuizFromPermalink(answersParam)
     }
 
     // Get results
@@ -228,23 +414,45 @@ const shareResults = async () => {
   
   const topResult = results.value[0]
   const text = `I just discovered my philosophical worldview: ${topResult.cosmology} (${topResult.category}). Take the Cosmology Quiz to find yours!`
-  const url = window.location.origin
+  const permalinkUrl = generatePermalink()
   
   if (navigator.share) {
     try {
       await navigator.share({
         title: 'My Philosophical Worldview',
         text,
-        url
+        url: permalinkUrl
       })
     } catch (err) {
       // Fallback to clipboard
-      copyToClipboard(`${text} ${url}`)
+      copyToClipboard(`${text} ${permalinkUrl}`)
     }
   } else {
     // Fallback to clipboard
-    copyToClipboard(`${text} ${url}`)
+    copyToClipboard(`${text} ${permalinkUrl}`)
   }
+}
+
+const generatePermalink = (): string => {
+  const sessionAnswers = quizEngine.quizState.value.sessionAnswers
+  
+  if (sessionAnswers.length === 0) {
+    return window.location.origin
+  }
+  
+  // Encode answers as readable string: Y=Y, N=N, ?=U (uncertain)
+  const answerString = sessionAnswers.map(sa => {
+    switch (sa.answer) {
+      case 'Y': return 'Y'
+      case 'N': return 'N' 
+      case '?': return 'U'
+      default: return 'N'
+    }
+  }).join('')
+  
+  // Create permalink URL
+  const baseUrl = window.location.origin
+  return `${baseUrl}/results?answers=${answerString}`
 }
 
 const copyToClipboard = async (text: string) => {
@@ -256,4 +464,82 @@ const copyToClipboard = async (text: string) => {
     console.error('Failed to copy to clipboard:', err)
   }
 }
+
+const toggleFavorite = (cosmologyName: string) => {
+  if (favoriteCosmology.value === cosmologyName) {
+    favoriteCosmology.value = null // Remove favorite
+  } else {
+    favoriteCosmology.value = cosmologyName // Set new favorite
+  }
+}
+
+const getDisplayRank = (result: any, index: number) => {
+  if (!favoriteCosmology.value) {
+    return index + 2 // Normal ranking (2, 3, 4, 5)
+  }
+  
+  // If we have a favorite, we need to show the original rank
+  const originalIndex = results.value.findIndex(r => r.cosmology === result.cosmology)
+  return originalIndex + 1
+}
+
+const copyPermalink = () => {
+  showPermalink.value = !showPermalink.value
+  if (showPermalink.value) {
+    nextTick(() => {
+      selectPermalinkText()
+    })
+  }
+}
+
+const selectPermalinkText = () => {
+  if (permalinkInput.value) {
+    permalinkInput.value.select()
+  }
+}
+
+const copyPermalinkToClipboard = async () => {
+  const permalinkUrl = generatePermalink()
+  await copyToClipboard(permalinkUrl)
+  // Could show a toast notification here
+}
 </script>
+
+<style scoped>
+.heart-button {
+  @apply text-gray-400 hover:text-pink-400 cursor-pointer;
+  transition: all 0.3s ease;
+}
+
+.heart-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.3));
+}
+
+.heart-active {
+  @apply text-pink-500;
+  filter: drop-shadow(0 0 12px rgba(236, 72, 153, 0.6));
+}
+
+.heart-pulse {
+  animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+.heart-small {
+  @apply opacity-60 hover:opacity-100;
+}
+
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* Add a subtle glow effect when heart is active */
+.heart-active svg {
+  filter: drop-shadow(0 0 6px rgba(236, 72, 153, 0.8));
+}
+</style>

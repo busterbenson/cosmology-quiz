@@ -52,10 +52,16 @@ export interface QuizState {
   askedQuestions: string[]
   sessionAnswers: Array<{ question: string; answer: string }>
   convictionProfile: ConvictionProfile
-  askedConcepts: Set<string>
+  askedConcepts: string[] // Changed from Set to Array for serialization
   dontKnowCount: number
   questionNumber: number
   questionHistory: QuizStateSnapshot[]
+  rankingHistory: string[][] // Track top 5 cosmologies after each question
+  rankingStabilityCount: number // How many consecutive questions with stable rankings
+  lastEliminationCount: number // Track how many were eliminated in the last round
+  noProgressCount: number // How many consecutive questions with no eliminations AND no ranking changes
+  tieBreakerMode: boolean // Whether we're in tie-breaking differentiation mode
+  tieBreakerQuestionsAsked: number // How many questions asked in tie-breaker mode
 }
 
 export interface QuizStateSnapshot {
@@ -64,9 +70,15 @@ export interface QuizStateSnapshot {
   scores: number[]
   convictionProfile: ConvictionProfile
   askedQuestions: string[]
-  askedConcepts: Set<string>
+  askedConcepts: string[] // Changed from Set to Array for serialization
   dontKnowCount: number
   questionNumber: number
+  rankingHistory: string[][]
+  rankingStabilityCount: number
+  lastEliminationCount: number
+  noProgressCount: number
+  tieBreakerMode: boolean
+  tieBreakerQuestionsAsked: number
 }
 
 export interface QuestionScore {
@@ -81,6 +93,11 @@ export interface QuestionScore {
   yesEliminated: number
   noEliminated: number
   potentialEliminations?: number
+  differentiationScore?: number
+  differentiationEfficiency?: number
+  boostedCount?: number
+  requiredQuestionBoost?: number
+  requiredCosmologyMatches?: number
 }
 
 export interface QuestionBonuses {
@@ -148,7 +165,51 @@ export const CONFIG = {
   // User Experience
   MAX_DONT_KNOW_STREAK: 3,
   PROGRESS_UPDATE_FREQUENCY: 1,
-  VISUAL_WIDTH: 60
+  VISUAL_WIDTH: 60,
+  
+  // Early Stopping Conditions
+  STOP_ON_ZERO_ELIMINATIONS: true,     // Stop when no progress is made
+  RANKING_STABILITY_ENABLED: true,     // Check for progress (eliminations + ranking changes)
+  RANKING_STABILITY_COUNT: 5,          // Track top N cosmologies for ranking changes
+  RANKING_STABILITY_THRESHOLD: 3,      // Questions with no progress to trigger stop
+  
+  // Tie-breaking mode when top cosmologies are close
+  TIE_BREAKING_MODE_ENABLED: true,     // Enable tie-breaking differentiation mode
+  TIE_SCORE_THRESHOLD: 20,             // Points difference to consider cosmologies "tied"
+  TIE_BREAKING_MIN_TIED: 3,            // Minimum number of tied cosmologies to trigger mode
+  TIE_BREAKING_MAX_QUESTIONS: 10,      // Maximum additional questions in tie-breaking mode
+  
+  // Question Selection Weights
+  EARLY_GAME_THRESHOLD: 50,            // More than this many cosmologies = early game
+  LATE_GAME_THRESHOLD: 10,             // Less than this many cosmologies = late game
+  ELIMINATION_WEIGHT_EARLY: 0.7,       // Weight for elimination score in early game
+  DIFFERENTIATION_WEIGHT_EARLY: 0.2,   // Weight for differentiation score in early game
+  ENTROPY_WEIGHT_EARLY: 0.1,           // Weight for entropy score in early game
+  ELIMINATION_WEIGHT_MID: 0.4,         // Weight for elimination score in mid game
+  DIFFERENTIATION_WEIGHT_MID: 0.4,     // Weight for differentiation score in mid game
+  ENTROPY_WEIGHT_MID: 0.2,             // Weight for entropy score in mid game
+  ELIMINATION_WEIGHT_LATE: 0.05,       // Weight for elimination score in late game
+  DIFFERENTIATION_WEIGHT_LATE: 0.85,   // Weight for differentiation score in late game  
+  ENTROPY_WEIGHT_LATE: 0.1,            // Weight for entropy score in late game
+  TOP_COSMOLOGIES_TO_CONSIDER: 10,     // Number of top cosmologies to consider for differentiation
+  TIE_BREAKER_TOP_COSMOLOGIES: 20,     // Number of top cosmologies to consider in tie-breaker mode
+  MIN_DIFFERENTIATION_EFFICIENCY: 0.3, // Minimum efficiency to consider question viable
+  POINTS_PER_REQUIRED: 10,             // Points awarded for Required relation
+  POINTS_PER_DEAL_BREAKER: 10,         // Points awarded for Deal Breaker relation
+  
+  // Required Question Boost System
+  REQUIRED_QUESTION_BOOST_ENABLED: true,   // Enable boosting Required questions for lower-ranked cosmologies
+  REQUIRED_QUESTION_BOOST_WEIGHT: 0.3,     // Weight for Required question boost in total score
+  REQUIRED_QUESTION_BOOST_SCALE: 200,      // Base boost points for Required questions (increased from 50)
+  REQUIRED_QUESTION_BOOST_RANGE: 30,       // Consider Required questions for cosmologies ranked 1-30
+  REQUIRED_QUESTION_RANK_BOOST_FACTOR: 1.0, // Boost factor increases with lower rank (increased from 0.5)
+  
+  // Coverage Phase System
+  COVERAGE_PHASE_ENABLED: true,            // Master switch for coverage phase
+  COVERAGE_PHASE_TRIGGER_THRESHOLD: 30,    // Trigger when ≤ N cosmologies remain
+  COVERAGE_PHASE_TOP_N: 20,               // Consider categories with cosmologies in top N
+  COVERAGE_PHASE_BOOST_SCALE: 500,        // Massive boost for coverage questions
+  COVERAGE_PHASE_MAX_QUESTIONS: 5,        // Maximum coverage questions per quiz
 } as const
 
 export type QuizAnswer = 'Y' | 'N' | '?' | 'B'

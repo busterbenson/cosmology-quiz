@@ -1,0 +1,901 @@
+
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Young Earth Creationism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testBiblicalLiteralism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Biblical Literalism' ? 'Testing...' : 'Biblical Literalism' }}
+          </button>
+          <button 
+            @click="testAppearanceofAge" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Appearance of Age' ? 'Testing...' : 'Appearance of Age' }}
+          </button>
+          <button 
+            @click="testCatastrophism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Catastrophism' ? 'Testing...' : 'Catastrophism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Theistic Evolution</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testEvolutionaryCreationism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Evolutionary Creationism' ? 'Testing...' : 'Evolutionary Creationism' }}
+          </button>
+          <button 
+            @click="testProgressiveCreation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Progressive Creation' ? 'Testing...' : 'Progressive Creation' }}
+          </button>
+          <button 
+            @click="testTeilhardianEvolution" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Teilhardian Evolution' ? 'Testing...' : 'Teilhardian Evolution' }}
+          </button>
+          <button 
+            @click="testDivineNaturalProcesses" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Divine Natural Processes' ? 'Testing...' : 'Divine Natural Processes' }}
+          </button>
+          <button 
+            @click="testGuidedDevelopment" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Guided Development' ? 'Testing...' : 'Guided Development' }}
+          </button>
+          <button 
+            @click="testPurposefulDirection" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Purposeful Direction' ? 'Testing...' : 'Purposeful Direction' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Deism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testClassicalDeism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Classical Deism' ? 'Testing...' : 'Classical Deism' }}
+          </button>
+          <button 
+            @click="testModernDeism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Modern Deism' ? 'Testing...' : 'Modern Deism' }}
+          </button>
+          <button 
+            @click="testScientificDeism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Scientific Deism' ? 'Testing...' : 'Scientific Deism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Polytheism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testClassicalPolytheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Classical Polytheism' ? 'Testing...' : 'Classical Polytheism' }}
+          </button>
+          <button 
+            @click="testHenotheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Henotheism' ? 'Testing...' : 'Henotheism' }}
+          </button>
+          <button 
+            @click="testReconstructionistPolytheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Reconstructionist Polytheism' ? 'Testing...' : 'Reconstructionist Polytheism' }}
+          </button>
+          <button 
+            @click="testHardPolytheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Hard Polytheism' ? 'Testing...' : 'Hard Polytheism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Animism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testTraditionalAnimism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Traditional Animism' ? 'Testing...' : 'Traditional Animism' }}
+          </button>
+          <button 
+            @click="testNeoAnimism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Neo-Animism' ? 'Testing...' : 'Neo-Animism' }}
+          </button>
+          <button 
+            @click="testPanpsychism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Panpsychism' ? 'Testing...' : 'Panpsychism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Panentheism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testProcessPanentheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Process Panentheism' ? 'Testing...' : 'Process Panentheism' }}
+          </button>
+          <button 
+            @click="testEmanationistPanentheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Emanationist Panentheism' ? 'Testing...' : 'Emanationist Panentheism' }}
+          </button>
+          <button 
+            @click="testParticipatoryPanentheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Participatory Panentheism' ? 'Testing...' : 'Participatory Panentheism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Pantheism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testClassicalPantheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Classical Pantheism' ? 'Testing...' : 'Classical Pantheism' }}
+          </button>
+          <button 
+            @click="testScientificPantheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Scientific Pantheism' ? 'Testing...' : 'Scientific Pantheism' }}
+          </button>
+          <button 
+            @click="testMonisticPantheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Monistic Pantheism' ? 'Testing...' : 'Monistic Pantheism' }}
+          </button>
+          <button 
+            @click="testMysticalPantheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Mystical Pantheism' ? 'Testing...' : 'Mystical Pantheism' }}
+          </button>
+          <button 
+            @click="testOrganicPantheism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Organic Pantheism' ? 'Testing...' : 'Organic Pantheism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Spiritual Naturalism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testScientificSpirituality" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Scientific Spirituality' ? 'Testing...' : 'Scientific Spirituality' }}
+          </button>
+          <button 
+            @click="testNaturalisticBuddhism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Naturalistic Buddhism' ? 'Testing...' : 'Naturalistic Buddhism' }}
+          </button>
+          <button 
+            @click="testPhilosophicalNaturalism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Philosophical Naturalism' ? 'Testing...' : 'Philosophical Naturalism' }}
+          </button>
+          <button 
+            @click="testEmbodiedSpirituality" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Embodied Spirituality' ? 'Testing...' : 'Embodied Spirituality' }}
+          </button>
+          <button 
+            @click="testNaturalisticTaoism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Naturalistic Taoism' ? 'Testing...' : 'Naturalistic Taoism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Non-Dual & Beyond-Concept</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testBuddhistEmptiness" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Buddhist Emptiness' ? 'Testing...' : 'Buddhist Emptiness' }}
+          </button>
+          <button 
+            @click="testDirectExperienceZen" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Direct Experience Zen' ? 'Testing...' : 'Direct Experience Zen' }}
+          </button>
+          <button 
+            @click="testVedanticNonDualism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Vedantic Non-Dualism' ? 'Testing...' : 'Vedantic Non-Dualism' }}
+          </button>
+          <button 
+            @click="testTantricNonDualism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Tantric Non-Dualism' ? 'Testing...' : 'Tantric Non-Dualism' }}
+          </button>
+          <button 
+            @click="testTaoistHarmony" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Taoist Harmony' ? 'Testing...' : 'Taoist Harmony' }}
+          </button>
+          <button 
+            @click="testContemporaryNonDualism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Contemporary Non-Dualism' ? 'Testing...' : 'Contemporary Non-Dualism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Gnosticism/Esoteric Dualism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testClassicalGnosticism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Classical Gnosticism' ? 'Testing...' : 'Classical Gnosticism' }}
+          </button>
+          <button 
+            @click="testPhilosophicalDualism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Philosophical Dualism' ? 'Testing...' : 'Philosophical Dualism' }}
+          </button>
+          <button 
+            @click="testModernMatrixSkepticism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Modern Matrix Skepticism' ? 'Testing...' : 'Modern Matrix Skepticism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Agnostic Spiritual Seeker</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testMysticalAgnosticism" 
+            :disabled="testing"
+            class="cosmic-button-tertiary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Mystical Agnosticism' ? 'Testing...' : 'Mystical Agnosticism' }}
+          </button>
+          <button 
+            @click="testPragmaticSpirituality" 
+            :disabled="testing"
+            class="cosmic-button-tertiary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Pragmatic Spirituality' ? 'Testing...' : 'Pragmatic Spirituality' }}
+          </button>
+          <button 
+            @click="testPhilosophicalSpirituality" 
+            :disabled="testing"
+            class="cosmic-button-tertiary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Philosophical Spirituality' ? 'Testing...' : 'Philosophical Spirituality' }}
+          </button>
+          <button 
+            @click="testTransitionalSeeking" 
+            :disabled="testing"
+            class="cosmic-button-tertiary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Transitional Seeking' ? 'Testing...' : 'Transitional Seeking' }}
+          </button>
+          <button 
+            @click="testEpistemologicalAgnosticism" 
+            :disabled="testing"
+            class="cosmic-button-tertiary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Epistemological Agnosticism' ? 'Testing...' : 'Epistemological Agnosticism' }}
+          </button>
+          <button 
+            @click="testPerpetualInquiry" 
+            :disabled="testing"
+            class="cosmic-button-tertiary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Perpetual Inquiry' ? 'Testing...' : 'Perpetual Inquiry' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Simulation Hypothesis</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testTechnologicalSimulation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Technological Simulation' ? 'Testing...' : 'Technological Simulation' }}
+          </button>
+          <button 
+            @click="testDivineSimulation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Divine Simulation' ? 'Testing...' : 'Divine Simulation' }}
+          </button>
+          <button 
+            @click="testNestedRealities" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Nested Realities' ? 'Testing...' : 'Nested Realities' }}
+          </button>
+          <button 
+            @click="testConsciousSimulation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Conscious Simulation' ? 'Testing...' : 'Conscious Simulation' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Consciousness-First</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testYogcraBuddhism" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Yogācāra Buddhism' ? 'Testing...' : 'Yogācāra Buddhism' }}
+          </button>
+          <button 
+            @click="testVajrayanaLuminosity" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Vajrayana Luminosity' ? 'Testing...' : 'Vajrayana Luminosity' }}
+          </button>
+          <button 
+            @click="testAnalyticalIdealism" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Analytical Idealism' ? 'Testing...' : 'Analytical Idealism' }}
+          </button>
+          <button 
+            @click="testQuantumIdealism" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Quantum Idealism' ? 'Testing...' : 'Quantum Idealism' }}
+          </button>
+          <button 
+            @click="testTranscendentalIdealism" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Transcendental Idealism' ? 'Testing...' : 'Transcendental Idealism' }}
+          </button>
+          <button 
+            @click="testNeutralMonism" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Neutral Monism' ? 'Testing...' : 'Neutral Monism' }}
+          </button>
+          <button 
+            @click="testBuddhistMindOnly" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Buddhist Mind-Only' ? 'Testing...' : 'Buddhist Mind-Only' }}
+          </button>
+          <button 
+            @click="testLuminousAwareness" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Luminous Awareness' ? 'Testing...' : 'Luminous Awareness' }}
+          </button>
+          <button 
+            @click="testUniversalMind" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Universal Mind' ? 'Testing...' : 'Universal Mind' }}
+          </button>
+          <button 
+            @click="testMindShapedReality" 
+            :disabled="testing"
+            class="cosmic-button text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Mind-Shaped Reality' ? 'Testing...' : 'Mind-Shaped Reality' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Multiverse Theory</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testQuantumManyWorlds" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Quantum Many-Worlds' ? 'Testing...' : 'Quantum Many-Worlds' }}
+          </button>
+          <button 
+            @click="testCosmicBubbleUniverses" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Cosmic Bubble Universes' ? 'Testing...' : 'Cosmic Bubble Universes' }}
+          </button>
+          <button 
+            @click="testHigherDimensionalBranes" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Higher-Dimensional Branes' ? 'Testing...' : 'Higher-Dimensional Branes' }}
+          </button>
+          <button 
+            @click="testCyclicalUniverse" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Cyclical Universe' ? 'Testing...' : 'Cyclical Universe' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Scientific Materialism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testReductiveMaterialism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Reductive Materialism' ? 'Testing...' : 'Reductive Materialism' }}
+          </button>
+          <button 
+            @click="testEmergentMaterialism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Emergent Materialism' ? 'Testing...' : 'Emergent Materialism' }}
+          </button>
+          <button 
+            @click="testPragmaticInstrumentalism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Pragmatic Instrumentalism' ? 'Testing...' : 'Pragmatic Instrumentalism' }}
+          </button>
+          <button 
+            @click="testPoeticNaturalism" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Poetic Naturalism' ? 'Testing...' : 'Poetic Naturalism' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Flat Earth Conspiracy</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testBiblicalFlatEarth" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Biblical Flat Earth' ? 'Testing...' : 'Biblical Flat Earth' }}
+          </button>
+          <button 
+            @click="testConspiratorialFlatEarth" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Conspiratorial Flat Earth' ? 'Testing...' : 'Conspiratorial Flat Earth' }}
+          </button>
+          <button 
+            @click="testExperientialFlatEarth" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Experiential Flat Earth' ? 'Testing...' : 'Experiential Flat Earth' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Ancient Astronaut Theory</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testInterventionOrigins" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Intervention Origins' ? 'Testing...' : 'Intervention Origins' }}
+          </button>
+          <button 
+            @click="testTechnologicalGuidance" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Technological Guidance' ? 'Testing...' : 'Technological Guidance' }}
+          </button>
+          <button 
+            @click="testReligiousFoundations" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Religious Foundations' ? 'Testing...' : 'Religious Foundations' }}
+          </button>
+          <button 
+            @click="testOngoingPresence" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Ongoing Presence' ? 'Testing...' : 'Ongoing Presence' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Indigenous Relational Worldview</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testPlaceBasedKnowledge" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Place-Based Knowledge' ? 'Testing...' : 'Place-Based Knowledge' }}
+          </button>
+          <button 
+            @click="testKinshipCosmology" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Kinship Cosmology' ? 'Testing...' : 'Kinship Cosmology' }}
+          </button>
+          <button 
+            @click="testCeremonialReality" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Ceremonial Reality' ? 'Testing...' : 'Ceremonial Reality' }}
+          </button>
+          <button 
+            @click="testAncestralContinuity" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Ancestral Continuity' ? 'Testing...' : 'Ancestral Continuity' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Unconventional Skeptic</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testHiddenHistoryResearcher" 
+            :disabled="testing"
+            class="cosmic-button-quaternary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Hidden History Researcher' ? 'Testing...' : 'Hidden History Researcher' }}
+          </button>
+          <button 
+            @click="testAlternativePhysicsExplorer" 
+            :disabled="testing"
+            class="cosmic-button-quaternary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Alternative Physics Explorer' ? 'Testing...' : 'Alternative Physics Explorer' }}
+          </button>
+          <button 
+            @click="testConspiracyAnalyst" 
+            :disabled="testing"
+            class="cosmic-button-quaternary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Conspiracy Analyst' ? 'Testing...' : 'Conspiracy Analyst' }}
+          </button>
+          <button 
+            @click="testOpenSkeptic" 
+            :disabled="testing"
+            class="cosmic-button-quaternary text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Open Skeptic' ? 'Testing...' : 'Open Skeptic' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Information-Theoretic Cosmology</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testItfromBit" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'It from Bit' ? 'Testing...' : 'It from Bit' }}
+          </button>
+          <button 
+            @click="testComputationalUniverse" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Computational Universe' ? 'Testing...' : 'Computational Universe' }}
+          </button>
+          <button 
+            @click="testEntropicGravity" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Entropic Gravity' ? 'Testing...' : 'Entropic Gravity' }}
+          </button>
+          <button 
+            @click="testObserverDependentReality" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Observer-Dependent Reality' ? 'Testing...' : 'Observer-Dependent Reality' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Islamic Philosophical Cosmology</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testContinuousCreation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Continuous Creation' ? 'Testing...' : 'Continuous Creation' }}
+          </button>
+          <button 
+            @click="testDependentExistence" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Dependent Existence' ? 'Testing...' : 'Dependent Existence' }}
+          </button>
+          <button 
+            @click="testDivineQualitiesinCreation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Divine Qualities in Creation' ? 'Testing...' : 'Divine Qualities in Creation' }}
+          </button>
+          <button 
+            @click="testLayeredReality" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Layered Reality' ? 'Testing...' : 'Layered Reality' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Traditional Daoist Cosmology</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testNaturalProcessSpontaneity" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Natural Process & Spontaneity' ? 'Testing...' : 'Natural Process & Spontaneity' }}
+          </button>
+          <button 
+            @click="testPatternCorrespondenceComplementarity" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Pattern Correspondence & Complementarity' ? 'Testing...' : 'Pattern Correspondence & Complementarity' }}
+          </button>
+          <button 
+            @click="testIntegralCultivation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Integral Cultivation' ? 'Testing...' : 'Integral Cultivation' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Jain Cosmology</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testManySidedReality" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Many-Sided Reality' ? 'Testing...' : 'Many-Sided Reality' }}
+          </button>
+          <button 
+            @click="testEternalUniverse" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Eternal Universe' ? 'Testing...' : 'Eternal Universe' }}
+          </button>
+          <button 
+            @click="testMultipleRealms" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Multiple Realms' ? 'Testing...' : 'Multiple Realms' }}
+          </button>
+          <button 
+            @click="testUniversalLife" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Universal Life' ? 'Testing...' : 'Universal Life' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Traditional African Cosmologies</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testCommunityAncestralConnection" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Community-Ancestral Connection' ? 'Testing...' : 'Community-Ancestral Connection' }}
+          </button>
+          <button 
+            @click="testCyclicalSacredTime" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Cyclical-Sacred Time' ? 'Testing...' : 'Cyclical-Sacred Time' }}
+          </button>
+          <button 
+            @click="testDivinationBasedCausality" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Divination-Based Causality' ? 'Testing...' : 'Divination-Based Causality' }}
+          </button>
+          <button 
+            @click="testVitalityForceCosmology" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Vitality-Force Cosmology' ? 'Testing...' : 'Vitality-Force Cosmology' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">Non-Dual Traditions</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testUnityofSelfandCosmos" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Unity of Self and Cosmos' ? 'Testing...' : 'Unity of Self and Cosmos' }}
+          </button>
+          <button 
+            @click="testSacredManifestation" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Sacred Manifestation' ? 'Testing...' : 'Sacred Manifestation' }}
+          </button>
+          <button 
+            @click="testNaturalHarmony" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Natural Harmony' ? 'Testing...' : 'Natural Harmony' }}
+          </button>
+        </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-bold text-white mb-3">New Age Spiritualism</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <button 
+            @click="testConsciousnessFocused" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Consciousness-Focused' ? 'Testing...' : 'Consciousness-Focused' }}
+          </button>
+          <button 
+            @click="testEnergyBased" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Energy-Based' ? 'Testing...' : 'Energy-Based' }}
+          </button>
+          <button 
+            @click="testEvolutionaryConsciousness" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Evolutionary Consciousness' ? 'Testing...' : 'Evolutionary Consciousness' }}
+          </button>
+          <button 
+            @click="testEclecticSynthesis" 
+            :disabled="testing"
+            class="bg-gray-600 hover:bg-gray-700 text-white rounded text-sm px-3 py-2"
+          >
+            {{ testing && targetCosmology === 'Eclectic Synthesis' ? 'Testing...' : 'Eclectic Synthesis' }}
+          </button>
+        </div>
+      </div>

@@ -1,0 +1,564 @@
+{
+  "Biblical Literalism": {
+    "cosmologyName": "Biblical Literalism",
+    "rank": 1,
+    "score": 292,
+    "answerString": "NYNNNNNNNNNYNNYNYYNNNNYNNNNNYN",
+    "permalink": "http://localhost:3000/results?answers=NYNNNNNNNNNYNNYNYYNNNNYNNNNNYN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Aliens intervened in human evolution",
+      "Scientific consensus on cosmology accepted",
+      "Aliens misunderstood as gods",
+      "Openness to multiple alternative explanations",
+      "True self is identical with ultimate reality",
+      "All things possess consciousness",
+      "Consciousness fundamental to reality",
+      "Ancient monuments built by humans",
+      "Divine permeates and transcends universe",
+      "Ceremonies maintain cosmic balance",
+      "Genesis historically accurate",
+      "Salvation through secret knowledge",
+      "Earth < 10000 years",
+      "No macroevolution",
+      "Earth billions of years old",
+      "God does not intervene after creation",
+      "Natural laws sufficient without intervention",
+      "Multiple distinct deities",
+      "Gods interact with humanity",
+      "Reality is energy/vibrational",
+      "Personal truth over dogma",
+      "Multiple universes exist simultaneously",
+      "Universe one of many bubbles",
+      "Universe cycles through repeated big bangs",
+      "Major religions accurate in essence",
+      "Earth flat with dome/firmament"
+    ],
+    "totalQuestions": 30,
+    "topResults": [
+      {
+        "cosmology": "Biblical Literalism",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Appearance of Age",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Catastrophism",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Neutral Monism",
+        "category": "Consciousness-First",
+        "score": 84
+      },
+      {
+        "cosmology": "Cyclical-Sacred Time",
+        "category": "Traditional African Cosmologies",
+        "score": 84
+      }
+    ]
+  },
+  "Appearance of Age": {
+    "cosmologyName": "Appearance of Age",
+    "rank": 2,
+    "score": 292,
+    "answerString": "NYNNNNNNNNNYNNYNYYNNNNYNNNNNYN",
+    "permalink": "http://localhost:3000/results?answers=NYNNNNNNNNNYNNYNYYNNNNYNNNNNYN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Aliens intervened in human evolution",
+      "Scientific consensus on cosmology accepted",
+      "Aliens misunderstood as gods",
+      "Openness to multiple alternative explanations",
+      "True self is identical with ultimate reality",
+      "All things possess consciousness",
+      "Consciousness fundamental to reality",
+      "Ancient monuments built by humans",
+      "Divine permeates and transcends universe",
+      "Ceremonies maintain cosmic balance",
+      "Genesis historically accurate",
+      "Salvation through secret knowledge",
+      "Earth < 10000 years",
+      "No macroevolution",
+      "Earth billions of years old",
+      "God does not intervene after creation",
+      "Natural laws sufficient without intervention",
+      "Multiple distinct deities",
+      "Gods interact with humanity",
+      "Reality is energy/vibrational",
+      "Personal truth over dogma",
+      "Multiple universes exist simultaneously",
+      "Universe one of many bubbles",
+      "Universe cycles through repeated big bangs",
+      "Major religions accurate in essence",
+      "Earth flat with dome/firmament"
+    ],
+    "totalQuestions": 30,
+    "topResults": [
+      {
+        "cosmology": "Biblical Literalism",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Appearance of Age",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Catastrophism",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Neutral Monism",
+        "category": "Consciousness-First",
+        "score": 84
+      },
+      {
+        "cosmology": "Cyclical-Sacred Time",
+        "category": "Traditional African Cosmologies",
+        "score": 84
+      }
+    ]
+  },
+  "Catastrophism": {
+    "cosmologyName": "Catastrophism",
+    "rank": 3,
+    "score": 292,
+    "answerString": "NYNNNNNNNNNYNNYNYYNNNNYNNNNNYN",
+    "permalink": "http://localhost:3000/results?answers=NYNNNNNNNNNYNNYNYYNNNNYNNNNNYN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Aliens intervened in human evolution",
+      "Scientific consensus on cosmology accepted",
+      "Aliens misunderstood as gods",
+      "Openness to multiple alternative explanations",
+      "True self is identical with ultimate reality",
+      "All things possess consciousness",
+      "Consciousness fundamental to reality",
+      "Ancient monuments built by humans",
+      "Divine permeates and transcends universe",
+      "Ceremonies maintain cosmic balance",
+      "Genesis historically accurate",
+      "Salvation through secret knowledge",
+      "Earth < 10000 years",
+      "No macroevolution",
+      "Earth billions of years old",
+      "God does not intervene after creation",
+      "Natural laws sufficient without intervention",
+      "Multiple distinct deities",
+      "Gods interact with humanity",
+      "Reality is energy/vibrational",
+      "Personal truth over dogma",
+      "Multiple universes exist simultaneously",
+      "Universe one of many bubbles",
+      "Universe cycles through repeated big bangs",
+      "Major religions accurate in essence",
+      "Earth flat with dome/firmament"
+    ],
+    "totalQuestions": 30,
+    "topResults": [
+      {
+        "cosmology": "Biblical Literalism",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Appearance of Age",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Catastrophism",
+        "category": "Young Earth Creationism",
+        "score": 292
+      },
+      {
+        "cosmology": "Neutral Monism",
+        "category": "Consciousness-First",
+        "score": 84
+      },
+      {
+        "cosmology": "Cyclical-Sacred Time",
+        "category": "Traditional African Cosmologies",
+        "score": 84
+      }
+    ]
+  },
+  "Evolutionary Creationism": {
+    "cosmologyName": "Evolutionary Creationism",
+    "rank": 1,
+    "score": 160,
+    "answerString": "NYNYYNNNYNNNNNNN",
+    "permalink": "http://localhost:3000/results?answers=NYNYYNNNYNNNNNNN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Scientific consensus on cosmology accepted",
+      "Aliens intervened in human evolution",
+      "True self is identical with ultimate reality",
+      "Aliens misunderstood as gods",
+      "Ancient monuments built by humans",
+      "Knowledge tied to specific places",
+      "Reality divided between spirit and matter",
+      "All diversity ultimately illusory",
+      "God does not intervene after creation",
+      "Non-human entities as persons with agency",
+      "Salvation through secret knowledge",
+      "Metaphysical certainty rejected"
+    ],
+    "totalQuestions": 16,
+    "topResults": [
+      {
+        "cosmology": "Evolutionary Creationism",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Progressive Creation",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Teilhardian Evolution",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Divine Natural Processes",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Guided Development",
+        "category": "Theistic Evolution",
+        "score": 160
+      }
+    ]
+  },
+  "Progressive Creation": {
+    "cosmologyName": "Progressive Creation",
+    "rank": 2,
+    "score": 160,
+    "answerString": "NYNYYNNNYNNNNNNN",
+    "permalink": "http://localhost:3000/results?answers=NYNYYNNNYNNNNNNN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Scientific consensus on cosmology accepted",
+      "Aliens intervened in human evolution",
+      "True self is identical with ultimate reality",
+      "Aliens misunderstood as gods",
+      "Ancient monuments built by humans",
+      "Knowledge tied to specific places",
+      "Reality divided between spirit and matter",
+      "All diversity ultimately illusory",
+      "God does not intervene after creation",
+      "Non-human entities as persons with agency",
+      "Salvation through secret knowledge",
+      "Metaphysical certainty rejected"
+    ],
+    "totalQuestions": 16,
+    "topResults": [
+      {
+        "cosmology": "Evolutionary Creationism",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Progressive Creation",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Teilhardian Evolution",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Divine Natural Processes",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Guided Development",
+        "category": "Theistic Evolution",
+        "score": 160
+      }
+    ]
+  },
+  "Teilhardian Evolution": {
+    "cosmologyName": "Teilhardian Evolution",
+    "rank": 3,
+    "score": 160,
+    "answerString": "NYNYYNNNYNNNNNNN",
+    "permalink": "http://localhost:3000/results?answers=NYNYYNNNYNNNNNNN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Scientific consensus on cosmology accepted",
+      "Aliens intervened in human evolution",
+      "True self is identical with ultimate reality",
+      "Aliens misunderstood as gods",
+      "Ancient monuments built by humans",
+      "Knowledge tied to specific places",
+      "Reality divided between spirit and matter",
+      "All diversity ultimately illusory",
+      "God does not intervene after creation",
+      "Non-human entities as persons with agency",
+      "Salvation through secret knowledge",
+      "Metaphysical certainty rejected"
+    ],
+    "totalQuestions": 16,
+    "topResults": [
+      {
+        "cosmology": "Evolutionary Creationism",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Progressive Creation",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Teilhardian Evolution",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Divine Natural Processes",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Guided Development",
+        "category": "Theistic Evolution",
+        "score": 160
+      }
+    ]
+  },
+  "Classical Deism": {
+    "cosmologyName": "Classical Deism",
+    "rank": 1,
+    "score": 130,
+    "answerString": "NYNYYNNNYNNNY",
+    "permalink": "http://localhost:3000/results?answers=NYNYYNNNYNNNY",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Scientific consensus on cosmology accepted",
+      "Aliens intervened in human evolution",
+      "True self is identical with ultimate reality",
+      "Aliens misunderstood as gods",
+      "Ancient monuments built by humans",
+      "Knowledge tied to specific places",
+      "Reality divided between spirit and matter",
+      "All diversity ultimately illusory",
+      "God does not intervene after creation"
+    ],
+    "totalQuestions": 13,
+    "topResults": [
+      {
+        "cosmology": "Classical Deism",
+        "category": "Deism",
+        "score": 130
+      },
+      {
+        "cosmology": "Scientific Deism",
+        "category": "Deism",
+        "score": 130
+      },
+      {
+        "cosmology": "Modern Deism",
+        "category": "Deism",
+        "score": 122
+      },
+      {
+        "cosmology": "Emanationist Panentheism",
+        "category": "Panentheism",
+        "score": 74
+      },
+      {
+        "cosmology": "Participatory Panentheism",
+        "category": "Panentheism",
+        "score": 74
+      }
+    ]
+  },
+  "Modern Deism": {
+    "cosmologyName": "Modern Deism",
+    "rank": 7,
+    "score": 152,
+    "answerString": "NYNYYNNNYNNNNNNN",
+    "permalink": "http://localhost:3000/results?answers=NYNYYNNNYNNNNNNN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Scientific consensus on cosmology accepted",
+      "Aliens intervened in human evolution",
+      "True self is identical with ultimate reality",
+      "Aliens misunderstood as gods",
+      "Ancient monuments built by humans",
+      "Knowledge tied to specific places",
+      "Reality divided between spirit and matter",
+      "All diversity ultimately illusory",
+      "God does not intervene after creation",
+      "Non-human entities as persons with agency",
+      "Salvation through secret knowledge",
+      "Metaphysical certainty rejected"
+    ],
+    "totalQuestions": 16,
+    "topResults": [
+      {
+        "cosmology": "Evolutionary Creationism",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Progressive Creation",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Teilhardian Evolution",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Divine Natural Processes",
+        "category": "Theistic Evolution",
+        "score": 160
+      },
+      {
+        "cosmology": "Guided Development",
+        "category": "Theistic Evolution",
+        "score": 160
+      }
+    ]
+  },
+  "Scientific Deism": {
+    "cosmologyName": "Scientific Deism",
+    "rank": 2,
+    "score": 130,
+    "answerString": "NYNYYNNNYNNNY",
+    "permalink": "http://localhost:3000/results?answers=NYNYYNNNYNNNY",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Practical results over theory",
+      "Physical matter/energy as fundamental",
+      "Scientific consensus on cosmology accepted",
+      "Aliens intervened in human evolution",
+      "True self is identical with ultimate reality",
+      "Aliens misunderstood as gods",
+      "Ancient monuments built by humans",
+      "Knowledge tied to specific places",
+      "Reality divided between spirit and matter",
+      "All diversity ultimately illusory",
+      "God does not intervene after creation"
+    ],
+    "totalQuestions": 13,
+    "topResults": [
+      {
+        "cosmology": "Classical Deism",
+        "category": "Deism",
+        "score": 130
+      },
+      {
+        "cosmology": "Scientific Deism",
+        "category": "Deism",
+        "score": 130
+      },
+      {
+        "cosmology": "Modern Deism",
+        "category": "Deism",
+        "score": 122
+      },
+      {
+        "cosmology": "Emanationist Panentheism",
+        "category": "Panentheism",
+        "score": 74
+      },
+      {
+        "cosmology": "Participatory Panentheism",
+        "category": "Panentheism",
+        "score": 74
+      }
+    ]
+  },
+  "Classical Polytheism": {
+    "cosmologyName": "Classical Polytheism",
+    "rank": 1,
+    "score": 88,
+    "answerString": "NNNNNNNNNYNN",
+    "permalink": "http://localhost:3000/results?answers=NNNNNNNNNYNN",
+    "questionsAsked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Physical matter/energy as fundamental",
+      "Reality as simulation/program",
+      "Aliens intervened in human evolution",
+      "Natural laws sufficient without intervention",
+      "Aliens misunderstood as gods",
+      "Practical results over theory",
+      "Reality divided between spirit and matter",
+      "Ancient monuments built by humans",
+      "Self and world not separate",
+      "External world as mental manifestation"
+    ],
+    "totalQuestions": 12,
+    "topResults": [
+      {
+        "cosmology": "Classical Polytheism",
+        "category": "Polytheism",
+        "score": 88
+      },
+      {
+        "cosmology": "Henotheism",
+        "category": "Polytheism",
+        "score": 88
+      },
+      {
+        "cosmology": "Reconstructionist Polytheism",
+        "category": "Polytheism",
+        "score": 88
+      },
+      {
+        "cosmology": "Hard Polytheism",
+        "category": "Polytheism",
+        "score": 88
+      },
+      {
+        "cosmology": "Universal Mind",
+        "category": "Consciousness-First",
+        "score": 72
+      }
+    ]
+  }
+}

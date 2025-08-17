@@ -69,21 +69,6 @@
       class="mt-8"
     />
 
-    <!-- Uncertainty Guidance -->
-    <div v-if="showUncertaintyGuidance" class="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-      <div class="flex items-start space-x-3">
-        <svg class="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 16.5c-.77.833.192 2.5 1.732 2.5z" />
-        </svg>
-        <div>
-          <h3 class="text-yellow-400 font-semibold mb-1">Uncertainty Guidance</h3>
-          <p class="text-yellow-200 text-sm">
-            You've answered "Don't know" {{ quizEngine.quizState.value.dontKnowCount }} times recently. 
-            Consider what feels most authentic to your lived experience, even if you're not completely certain.
-          </p>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -103,7 +88,6 @@ const currentQuestion = computed(() => {
 const progress = computed(() => quizEngine.getProgress())
 const canGoBack = computed(() => quizEngine.quizState.value.questionHistory.length > 0)
 const hasConvictions = computed(() => Object.keys(quizEngine.quizState.value.convictionProfile).length > 0)
-const showUncertaintyGuidance = computed(() => quizEngine.quizState.value.dontKnowCount >= CONFIG.MAX_DONT_KNOW_STREAK)
 
 const isComplete = computed(() => {
   // Don't mark as complete if quiz engine isn't initialized yet

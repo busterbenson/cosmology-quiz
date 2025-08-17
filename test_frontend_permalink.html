@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Frontend Permalink Logic</title>
+    <script>
+        // Simple test to see what the browser actually produces
+        async function testPermalink() {
+            try {
+                // Test the specific case
+                const testUrl = 'http://localhost:3000/results?answers=NNNNNNNNNYNN';
+                console.log('Testing URL:', testUrl);
+                
+                // Open in new window to see actual results
+                const newWindow = window.open(testUrl, '_blank');
+                
+                // Also test API endpoint
+                const response = await fetch('/api/auto-quiz', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        answerProfile: {
+                            "Direct experience over doctrine": "N",
+                            "One supreme being": "N", 
+                            "Physical matter/energy as fundamental": "N",
+                            "Reality as simulation/program": "N",
+                            "Aliens intervened in human evolution": "N",
+                            "Natural laws sufficient without intervention": "N",
+                            "Aliens misunderstood as gods": "N",
+                            "Practical results over theory": "N",
+                            "Reality divided between spirit and matter": "N",
+                            "Ancient monuments built by humans": "N",
+                            "Self and world not separate": "Y",
+                            "External world as mental manifestation": "N"
+                        }
+                    })
+                });
+                
+                const apiResult = await response.json();
+                console.log('API Result:', apiResult.data?.finalResults?.slice(0, 5));
+                
+                document.getElementById('result').innerHTML = `
+                    <h2>Test Results</h2>
+                    <p>Opened URL: ${testUrl}</p>
+                    <p>API Top Result: ${apiResult.data?.finalResults?.[0]?.cosmology || 'Unknown'}</p>
+                    <pre>${JSON.stringify(apiResult.data?.finalResults?.slice(0, 5), null, 2)}</pre>
+                `;
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Frontend Permalink Test</h1>
+    <button onclick="testPermalink()">Test NNNNNNNNNYNN Permalink</button>
+    <div id="result"></div>
+</body>
+</html>

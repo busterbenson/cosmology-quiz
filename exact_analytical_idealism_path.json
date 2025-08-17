@@ -1,0 +1,235 @@
+{
+  "Analytical Idealism": {
+    "category": "Consciousness-First",
+    "best_rank": 1,
+    "best_score": 110,
+    "strategy_used": "auto",
+    "attempts_tested": 1,
+    "total_questions": 18,
+    "questions_asked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Physical matter/energy as fundamental",
+      "Consciousness fundamental to reality",
+      "Aliens intervened in human evolution",
+      "Reality as simulation/program",
+      "Openness to multiple alternative explanations",
+      "Material world created by flawed being",
+      "Practical results over theory",
+      "Hidden controllers of reality",
+      "Natural laws sufficient without intervention",
+      "Non-human entities as persons with agency",
+      "Aliens misunderstood as gods",
+      "Ultimate reality beyond concepts",
+      "God and universe are identical",
+      "Universe cycles through repeated big bangs",
+      "Divine permeates and transcends universe",
+      "Salvation through secret knowledge"
+    ],
+    "answers_given": [
+      "N",
+      "Y",
+      "N",
+      "Y",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "Y",
+      "N",
+      "Y",
+      "Y",
+      "Y",
+      "Y",
+      "N"
+    ],
+    "question_scores": [
+      1210.95,
+      741.0,
+      627.9,
+      1428.5474002423084,
+      210.6,
+      351.0,
+      86.4,
+      101.4,
+      168.0,
+      66.3,
+      64.0,
+      62.4,
+      44.0,
+      57.6,
+      9.600000000000001,
+      7.8,
+      11.7,
+      5.2
+    ],
+    "simulation_steps": [
+      {
+        "question_number": 1,
+        "question": "Direct experience over doctrine",
+        "answer": "N",
+        "eliminated_count": 27,
+        "active_cosmologies": 83,
+        "target_score": 3,
+        "target_rank": 37
+      },
+      {
+        "question_number": 2,
+        "question": "One supreme being",
+        "answer": "Y",
+        "eliminated_count": 19,
+        "active_cosmologies": 86,
+        "target_score": 6,
+        "target_rank": 33
+      },
+      {
+        "question_number": 3,
+        "question": "Physical matter/energy as fundamental",
+        "answer": "N",
+        "eliminated_count": 14,
+        "active_cosmologies": 84,
+        "target_score": 16,
+        "target_rank": 10
+      },
+      {
+        "question_number": 4,
+        "question": "Consciousness fundamental to reality",
+        "answer": "Y",
+        "eliminated_count": 7,
+        "active_cosmologies": 69,
+        "target_score": 26,
+        "target_rank": 4
+      },
+      {
+        "question_number": 5,
+        "question": "Aliens intervened in human evolution",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 74,
+        "target_score": 36,
+        "target_rank": 4
+      },
+      {
+        "question_number": 6,
+        "question": "Reality as simulation/program",
+        "answer": "N",
+        "eliminated_count": 5,
+        "active_cosmologies": 73,
+        "target_score": 46,
+        "target_rank": 1
+      },
+      {
+        "question_number": 7,
+        "question": "Openness to multiple alternative explanations",
+        "answer": "N",
+        "eliminated_count": 27,
+        "active_cosmologies": 51,
+        "target_score": 49,
+        "target_rank": 1
+      },
+      {
+        "question_number": 8,
+        "question": "Material world created by flawed being",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 76,
+        "target_score": 59,
+        "target_rank": 1
+      },
+      {
+        "question_number": 9,
+        "question": "Practical results over theory",
+        "answer": "N",
+        "eliminated_count": 7,
+        "active_cosmologies": 70,
+        "target_score": 69,
+        "target_rank": 1
+      },
+      {
+        "question_number": 10,
+        "question": "Hidden controllers of reality",
+        "answer": "N",
+        "eliminated_count": 1,
+        "active_cosmologies": 76,
+        "target_score": 79,
+        "target_rank": 1
+      },
+      {
+        "question_number": 11,
+        "question": "Natural laws sufficient without intervention",
+        "answer": "N",
+        "eliminated_count": 10,
+        "active_cosmologies": 67,
+        "target_score": 82,
+        "target_rank": 1
+      },
+      {
+        "question_number": 12,
+        "question": "Non-human entities as persons with agency",
+        "answer": "Y",
+        "eliminated_count": 4,
+        "active_cosmologies": 73,
+        "target_score": 85,
+        "target_rank": 1
+      },
+      {
+        "question_number": 13,
+        "question": "Aliens misunderstood as gods",
+        "answer": "N",
+        "eliminated_count": 1,
+        "active_cosmologies": 77,
+        "target_score": 95,
+        "target_rank": 1
+      },
+      {
+        "question_number": 14,
+        "question": "Ultimate reality beyond concepts",
+        "answer": "Y",
+        "eliminated_count": 8,
+        "active_cosmologies": 70,
+        "target_score": 98,
+        "target_rank": 1
+      },
+      {
+        "question_number": 15,
+        "question": "God and universe are identical",
+        "answer": "Y",
+        "eliminated_count": 3,
+        "active_cosmologies": 67,
+        "target_score": 101,
+        "target_rank": 1
+      },
+      {
+        "question_number": 16,
+        "question": "Universe cycles through repeated big bangs",
+        "answer": "Y",
+        "eliminated_count": 2,
+        "active_cosmologies": 68,
+        "target_score": 104,
+        "target_rank": 1
+      },
+      {
+        "question_number": 17,
+        "question": "Divine permeates and transcends universe",
+        "answer": "Y",
+        "eliminated_count": 3,
+        "active_cosmologies": 67,
+        "target_score": 107,
+        "target_rank": 1
+      },
+      {
+        "question_number": 18,
+        "question": "Salvation through secret knowledge",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 68,
+        "target_score": 110,
+        "target_rank": 1
+      }
+    ],
+    "path_summary": "18 questions using auto strategy"
+  }
+}

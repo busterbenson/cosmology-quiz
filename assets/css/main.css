@@ -29,6 +29,11 @@
     @apply font-semibold py-2 px-4 rounded-lg transition-all duration-200;
   }
   
+  .cosmic-button-outline {
+    @apply border border-cosmic-gold/50 text-cosmic-gold hover:bg-cosmic-gold/10;
+    @apply font-semibold py-2 px-4 rounded-lg transition-all duration-200;
+  }
+  
   .dot-visualization {
     @apply font-mono text-lg tracking-wider;
   }

@@ -92,13 +92,13 @@ export const useDataLoader = () => {
     
     const columns = Object.keys(firstCosmology).filter(col => !excludeCols.includes(col))
     
-    console.log('Question columns debug:', {
-      totalColumns: Object.keys(firstCosmology).length,
-      excludedColumns: excludeCols,
-      questionColumns: columns.length,
-      sampleColumns: columns.slice(0, 5),
-      sampleQuestionKeys: Object.keys(questions.value).slice(0, 5)
-    })
+    // console.log('Question columns debug:', {
+    //   totalColumns: Object.keys(firstCosmology).length,
+    //   excludedColumns: excludeCols,
+    //   questionColumns: columns.length,
+    //   sampleColumns: columns.slice(0, 5),
+    //   sampleQuestionKeys: Object.keys(questions.value).slice(0, 5)
+    // })
     
     return columns
   }

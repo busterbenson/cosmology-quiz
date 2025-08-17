@@ -1,0 +1,972 @@
+{
+  "Biblical Literalism": {
+    "category": "Young Earth Creationism",
+    "final_rank": 1,
+    "final_score": 193,
+    "total_questions": 15,
+    "questions_asked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Physical matter/energy as fundamental",
+      "Practical results over theory",
+      "Consciousness fundamental to reality",
+      "Natural laws sufficient without intervention",
+      "Consciousness emerges from physical processes",
+      "Reality as simulation/program",
+      "True self is identical with ultimate reality",
+      "Aliens intervened in human evolution",
+      "Ultimate reality beyond concepts",
+      "Scientific consensus on cosmology accepted",
+      "Self and world not separate",
+      "Non-human entities as persons with agency",
+      "Ineffable spiritual reality beyond human comprehension"
+    ],
+    "answers_given": [
+      "N",
+      "Y",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N"
+    ],
+    "question_scores": [
+      968.7599999999999,
+      592.8,
+      502.31999999999994,
+      349.44,
+      283.5411491730939,
+      229.32,
+      336.72903005711555,
+      293.28,
+      280.6075250475963,
+      187.2,
+      265.356,
+      181.43999999999997,
+      117.0,
+      162.24,
+      171.99
+    ],
+    "simulation_steps": [
+      {
+        "question_number": 1,
+        "question": "Direct experience over doctrine",
+        "answer": "N",
+        "eliminated_count": 27,
+        "active_cosmologies": 83,
+        "target_score": 60,
+        "target_rank": 1
+      },
+      {
+        "question_number": 2,
+        "question": "One supreme being",
+        "answer": "Y",
+        "eliminated_count": 19,
+        "active_cosmologies": 86,
+        "target_score": 70,
+        "target_rank": 1
+      },
+      {
+        "question_number": 3,
+        "question": "Physical matter/energy as fundamental",
+        "answer": "N",
+        "eliminated_count": 14,
+        "active_cosmologies": 84,
+        "target_score": 73,
+        "target_rank": 1
+      },
+      {
+        "question_number": 4,
+        "question": "Practical results over theory",
+        "answer": "N",
+        "eliminated_count": 8,
+        "active_cosmologies": 90,
+        "target_score": 83,
+        "target_rank": 1
+      },
+      {
+        "question_number": 5,
+        "question": "Consciousness fundamental to reality",
+        "answer": "N",
+        "eliminated_count": 19,
+        "active_cosmologies": 78,
+        "target_score": 93,
+        "target_rank": 1
+      },
+      {
+        "question_number": 6,
+        "question": "Natural laws sufficient without intervention",
+        "answer": "N",
+        "eliminated_count": 12,
+        "active_cosmologies": 88,
+        "target_score": 103,
+        "target_rank": 1
+      },
+      {
+        "question_number": 7,
+        "question": "Consciousness emerges from physical processes",
+        "answer": "N",
+        "eliminated_count": 8,
+        "active_cosmologies": 90,
+        "target_score": 113,
+        "target_rank": 1
+      },
+      {
+        "question_number": 8,
+        "question": "Reality as simulation/program",
+        "answer": "N",
+        "eliminated_count": 4,
+        "active_cosmologies": 94,
+        "target_score": 123,
+        "target_rank": 1
+      },
+      {
+        "question_number": 9,
+        "question": "True self is identical with ultimate reality",
+        "answer": "N",
+        "eliminated_count": 20,
+        "active_cosmologies": 78,
+        "target_score": 133,
+        "target_rank": 1
+      },
+      {
+        "question_number": 10,
+        "question": "Aliens intervened in human evolution",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 99,
+        "target_score": 143,
+        "target_rank": 1
+      },
+      {
+        "question_number": 11,
+        "question": "Ultimate reality beyond concepts",
+        "answer": "N",
+        "eliminated_count": 9,
+        "active_cosmologies": 92,
+        "target_score": 153,
+        "target_rank": 1
+      },
+      {
+        "question_number": 12,
+        "question": "Scientific consensus on cosmology accepted",
+        "answer": "N",
+        "eliminated_count": 27,
+        "active_cosmologies": 74,
+        "target_score": 163,
+        "target_rank": 1
+      },
+      {
+        "question_number": 13,
+        "question": "Self and world not separate",
+        "answer": "N",
+        "eliminated_count": 9,
+        "active_cosmologies": 92,
+        "target_score": 173,
+        "target_rank": 1
+      },
+      {
+        "question_number": 14,
+        "question": "Non-human entities as persons with agency",
+        "answer": "N",
+        "eliminated_count": 8,
+        "active_cosmologies": 93,
+        "target_score": 183,
+        "target_rank": 1
+      },
+      {
+        "question_number": 15,
+        "question": "Ineffable spiritual reality beyond human comprehension",
+        "answer": "N",
+        "eliminated_count": 18,
+        "active_cosmologies": 83,
+        "target_score": 193,
+        "target_rank": 1
+      }
+    ]
+  },
+  "Open Skeptic": {
+    "category": "Unconventional Skeptic",
+    "final_rank": 2,
+    "final_score": 125,
+    "total_questions": 15,
+    "questions_asked": [
+      "Direct experience over doctrine",
+      "Physical matter/energy as fundamental",
+      "One supreme being",
+      "Practical results over theory",
+      "Consciousness emerges from physical processes",
+      "Consciousness fundamental to reality",
+      "Reality as simulation/program",
+      "Scientific consensus on cosmology accepted",
+      "True self is identical with ultimate reality",
+      "Natural laws sufficient without intervention",
+      "Self and world not separate",
+      "Ultimate reality beyond concepts",
+      "Major religions accurate in essence",
+      "External world as mental manifestation",
+      "Aliens intervened in human evolution"
+    ],
+    "answers_given": [
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?"
+    ],
+    "question_scores": [
+      968.7599999999999,
+      861.12,
+      943.4879999999998,
+      778.7520000000001,
+      741.312,
+      561.6,
+      561.6,
+      524.16,
+      486.72,
+      445.53599999999994,
+      421.2,
+      387.50399999999996,
+      366.912,
+      329.472,
+      329.472
+    ],
+    "simulation_steps": [
+      {
+        "question_number": 1,
+        "question": "Direct experience over doctrine",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 55,
+        "target_rank": 2
+      },
+      {
+        "question_number": 2,
+        "question": "Physical matter/energy as fundamental",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 60,
+        "target_rank": 2
+      },
+      {
+        "question_number": 3,
+        "question": "One supreme being",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 65,
+        "target_rank": 2
+      },
+      {
+        "question_number": 4,
+        "question": "Practical results over theory",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 70,
+        "target_rank": 2
+      },
+      {
+        "question_number": 5,
+        "question": "Consciousness emerges from physical processes",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 75,
+        "target_rank": 2
+      },
+      {
+        "question_number": 6,
+        "question": "Consciousness fundamental to reality",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 80,
+        "target_rank": 2
+      },
+      {
+        "question_number": 7,
+        "question": "Reality as simulation/program",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 85,
+        "target_rank": 2
+      },
+      {
+        "question_number": 8,
+        "question": "Scientific consensus on cosmology accepted",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 90,
+        "target_rank": 2
+      },
+      {
+        "question_number": 9,
+        "question": "True self is identical with ultimate reality",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 95,
+        "target_rank": 2
+      },
+      {
+        "question_number": 10,
+        "question": "Natural laws sufficient without intervention",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 100,
+        "target_rank": 2
+      },
+      {
+        "question_number": 11,
+        "question": "Self and world not separate",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 105,
+        "target_rank": 2
+      },
+      {
+        "question_number": 12,
+        "question": "Ultimate reality beyond concepts",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 110,
+        "target_rank": 2
+      },
+      {
+        "question_number": 13,
+        "question": "Major religions accurate in essence",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 115,
+        "target_rank": 2
+      },
+      {
+        "question_number": 14,
+        "question": "External world as mental manifestation",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 120,
+        "target_rank": 2
+      },
+      {
+        "question_number": 15,
+        "question": "Aliens intervened in human evolution",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 125,
+        "target_rank": 2
+      }
+    ]
+  },
+  "Mystical Agnosticism": {
+    "category": "Agnostic Spiritual Seeker",
+    "final_rank": 1,
+    "final_score": 115,
+    "total_questions": 15,
+    "questions_asked": [
+      "Direct experience over doctrine",
+      "Physical matter/energy as fundamental",
+      "One supreme being",
+      "Practical results over theory",
+      "Reality as simulation/program",
+      "Aliens intervened in human evolution",
+      "Aliens misunderstood as gods",
+      "Reality divided between spirit and matter",
+      "Material world created by flawed being",
+      "Scientific consensus on cosmology accepted",
+      "Ancient monuments built by humans",
+      "Multiple distinct deities",
+      "Natural laws sufficient without intervention",
+      "God and universe are identical",
+      "Physical world is illusion"
+    ],
+    "answers_given": [
+      "?",
+      "?",
+      "Y",
+      "?",
+      "Y",
+      "?",
+      "?",
+      "?",
+      "Y",
+      "?",
+      "Y",
+      "?",
+      "?",
+      "?",
+      "Y"
+    ],
+    "question_scores": [
+      968.7599999999999,
+      861.12,
+      943.4879999999998,
+      569.088,
+      393.12,
+      104.832,
+      52.416,
+      48.672000000000004,
+      41.184,
+      37.44,
+      31.823999999999995,
+      65.52,
+      52.416,
+      34.397999999999996,
+      26.208
+    ],
+    "simulation_steps": [
+      {
+        "question_number": 1,
+        "question": "Direct experience over doctrine",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 55,
+        "target_rank": 1
+      },
+      {
+        "question_number": 2,
+        "question": "Physical matter/energy as fundamental",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 110,
+        "target_score": 60,
+        "target_rank": 1
+      },
+      {
+        "question_number": 3,
+        "question": "One supreme being",
+        "answer": "Y",
+        "eliminated_count": 24,
+        "active_cosmologies": 86,
+        "target_score": 63,
+        "target_rank": 1
+      },
+      {
+        "question_number": 4,
+        "question": "Practical results over theory",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 86,
+        "target_score": 68,
+        "target_rank": 1
+      },
+      {
+        "question_number": 5,
+        "question": "Reality as simulation/program",
+        "answer": "Y",
+        "eliminated_count": 42,
+        "active_cosmologies": 50,
+        "target_score": 71,
+        "target_rank": 1
+      },
+      {
+        "question_number": 6,
+        "question": "Aliens intervened in human evolution",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 50,
+        "target_score": 76,
+        "target_rank": 1
+      },
+      {
+        "question_number": 7,
+        "question": "Aliens misunderstood as gods",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 50,
+        "target_score": 81,
+        "target_rank": 1
+      },
+      {
+        "question_number": 8,
+        "question": "Reality divided between spirit and matter",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 50,
+        "target_score": 86,
+        "target_rank": 1
+      },
+      {
+        "question_number": 9,
+        "question": "Material world created by flawed being",
+        "answer": "Y",
+        "eliminated_count": 11,
+        "active_cosmologies": 47,
+        "target_score": 89,
+        "target_rank": 1
+      },
+      {
+        "question_number": 10,
+        "question": "Scientific consensus on cosmology accepted",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 47,
+        "target_score": 94,
+        "target_rank": 1
+      },
+      {
+        "question_number": 11,
+        "question": "Ancient monuments built by humans",
+        "answer": "Y",
+        "eliminated_count": 1,
+        "active_cosmologies": 57,
+        "target_score": 97,
+        "target_rank": 1
+      },
+      {
+        "question_number": 12,
+        "question": "Multiple distinct deities",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 57,
+        "target_score": 102,
+        "target_rank": 1
+      },
+      {
+        "question_number": 13,
+        "question": "Natural laws sufficient without intervention",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 57,
+        "target_score": 107,
+        "target_rank": 1
+      },
+      {
+        "question_number": 14,
+        "question": "God and universe are identical",
+        "answer": "?",
+        "eliminated_count": 0,
+        "active_cosmologies": 55,
+        "target_score": 112,
+        "target_rank": 1
+      },
+      {
+        "question_number": 15,
+        "question": "Physical world is illusion",
+        "answer": "Y",
+        "eliminated_count": 7,
+        "active_cosmologies": 51,
+        "target_score": 115,
+        "target_rank": 1
+      }
+    ]
+  },
+  "Scientific Pantheism": {
+    "category": "Pantheism",
+    "final_rank": 1,
+    "final_score": 165,
+    "total_questions": 15,
+    "questions_asked": [
+      "Direct experience over doctrine",
+      "One supreme being",
+      "Physical matter/energy as fundamental",
+      "Practical results over theory",
+      "Aliens intervened in human evolution",
+      "Scientific consensus on cosmology accepted",
+      "Reality as simulation/program",
+      "Consciousness fundamental to reality",
+      "Major religions accurate in essence",
+      "Consciousness emerges from physical processes",
+      "Non-human entities as persons with agency",
+      "Ultimate reality beyond concepts",
+      "Consciousness creates reality",
+      "True self is identical with ultimate reality",
+      "Reality divided between spirit and matter"
+    ],
+    "answers_given": [
+      "N",
+      "N",
+      "Y",
+      "Y",
+      "N",
+      "Y",
+      "N",
+      "N",
+      "N",
+      "Y",
+      "N",
+      "N",
+      "N",
+      "Y",
+      "N"
+    ],
+    "question_scores": [
+      968.7599999999999,
+      592.8,
+      538.2,
+      360.36,
+      112.32,
+      371.28,
+      265.2,
+      519.8254401506722,
+      248.43,
+      255.97044081512323,
+      162.24,
+      280.09799999999996,
+      175.16974265324353,
+      239.39999999999998,
+      175.3269618094395
+    ],
+    "simulation_steps": [
+      {
+        "question_number": 1,
+        "question": "Direct experience over doctrine",
+        "answer": "N",
+        "eliminated_count": 27,
+        "active_cosmologies": 83,
+        "target_score": 60,
+        "target_rank": 19
+      },
+      {
+        "question_number": 2,
+        "question": "One supreme being",
+        "answer": "N",
+        "eliminated_count": 20,
+        "active_cosmologies": 89,
+        "target_score": 70,
+        "target_rank": 6
+      },
+      {
+        "question_number": 3,
+        "question": "Physical matter/energy as fundamental",
+        "answer": "Y",
+        "eliminated_count": 23,
+        "active_cosmologies": 86,
+        "target_score": 80,
+        "target_rank": 1
+      },
+      {
+        "question_number": 4,
+        "question": "Practical results over theory",
+        "answer": "Y",
+        "eliminated_count": 33,
+        "active_cosmologies": 58,
+        "target_score": 83,
+        "target_rank": 1
+      },
+      {
+        "question_number": 5,
+        "question": "Aliens intervened in human evolution",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 89,
+        "target_score": 93,
+        "target_rank": 1
+      },
+      {
+        "question_number": 6,
+        "question": "Scientific consensus on cosmology accepted",
+        "answer": "Y",
+        "eliminated_count": 7,
+        "active_cosmologies": 84,
+        "target_score": 103,
+        "target_rank": 1
+      },
+      {
+        "question_number": 7,
+        "question": "Reality as simulation/program",
+        "answer": "N",
+        "eliminated_count": 5,
+        "active_cosmologies": 104,
+        "target_score": 106,
+        "target_rank": 1
+      },
+      {
+        "question_number": 8,
+        "question": "Consciousness fundamental to reality",
+        "answer": "N",
+        "eliminated_count": 19,
+        "active_cosmologies": 89,
+        "target_score": 109,
+        "target_rank": 1
+      },
+      {
+        "question_number": 9,
+        "question": "Major religions accurate in essence",
+        "answer": "N",
+        "eliminated_count": 13,
+        "active_cosmologies": 95,
+        "target_score": 119,
+        "target_rank": 1
+      },
+      {
+        "question_number": 10,
+        "question": "Consciousness emerges from physical processes",
+        "answer": "Y",
+        "eliminated_count": 18,
+        "active_cosmologies": 87,
+        "target_score": 129,
+        "target_rank": 1
+      },
+      {
+        "question_number": 11,
+        "question": "Non-human entities as persons with agency",
+        "answer": "N",
+        "eliminated_count": 8,
+        "active_cosmologies": 97,
+        "target_score": 132,
+        "target_rank": 1
+      },
+      {
+        "question_number": 12,
+        "question": "Ultimate reality beyond concepts",
+        "answer": "N",
+        "eliminated_count": 9,
+        "active_cosmologies": 96,
+        "target_score": 142,
+        "target_rank": 1
+      },
+      {
+        "question_number": 13,
+        "question": "Consciousness creates reality",
+        "answer": "N",
+        "eliminated_count": 5,
+        "active_cosmologies": 103,
+        "target_score": 152,
+        "target_rank": 1
+      },
+      {
+        "question_number": 14,
+        "question": "True self is identical with ultimate reality",
+        "answer": "Y",
+        "eliminated_count": 12,
+        "active_cosmologies": 96,
+        "target_score": 155,
+        "target_rank": 1
+      },
+      {
+        "question_number": 15,
+        "question": "Reality divided between spirit and matter",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 106,
+        "target_score": 165,
+        "target_rank": 1
+      }
+    ]
+  },
+  "Reductive Materialism": {
+    "category": "Scientific Materialism",
+    "final_rank": 2,
+    "final_score": 186,
+    "total_questions": 15,
+    "questions_asked": [
+      "Direct experience over doctrine",
+      "Physical matter/energy as fundamental",
+      "One supreme being",
+      "Consciousness fundamental to reality",
+      "Scientific consensus on cosmology accepted",
+      "Practical results over theory",
+      "Consciousness emerges from physical processes",
+      "Reality as simulation/program",
+      "True self is identical with ultimate reality",
+      "Aliens intervened in human evolution",
+      "Self and world not separate",
+      "Major religions accurate in essence",
+      "Reality divided between spirit and matter",
+      "Consciousness creates reality",
+      "Ultimate reality beyond concepts"
+    ],
+    "answers_given": [
+      "Y",
+      "Y",
+      "N",
+      "N",
+      "Y",
+      "N",
+      "Y",
+      "N",
+      "Y",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N",
+      "N"
+    ],
+    "question_scores": [
+      968.7599999999999,
+      502.31999999999994,
+      786.2399999999999,
+      397.9524900675002,
+      432.43199999999996,
+      478.4,
+      331.2558645842771,
+      296.4,
+      273.0,
+      234.0,
+      279.76127340099146,
+      267.54,
+      186.94210513580452,
+      265.3917580334462,
+      226.04399999999998
+    ],
+    "simulation_steps": [
+      {
+        "question_number": 1,
+        "question": "Direct experience over doctrine",
+        "answer": "Y",
+        "eliminated_count": 23,
+        "active_cosmologies": 87,
+        "target_score": 53,
+        "target_rank": 49
+      },
+      {
+        "question_number": 2,
+        "question": "Physical matter/energy as fundamental",
+        "answer": "Y",
+        "eliminated_count": 23,
+        "active_cosmologies": 87,
+        "target_score": 63,
+        "target_rank": 12
+      },
+      {
+        "question_number": 3,
+        "question": "One supreme being",
+        "answer": "N",
+        "eliminated_count": 21,
+        "active_cosmologies": 89,
+        "target_score": 73,
+        "target_rank": 6
+      },
+      {
+        "question_number": 4,
+        "question": "Consciousness fundamental to reality",
+        "answer": "N",
+        "eliminated_count": 20,
+        "active_cosmologies": 90,
+        "target_score": 83,
+        "target_rank": 6
+      },
+      {
+        "question_number": 5,
+        "question": "Scientific consensus on cosmology accepted",
+        "answer": "Y",
+        "eliminated_count": 8,
+        "active_cosmologies": 102,
+        "target_score": 93,
+        "target_rank": 6
+      },
+      {
+        "question_number": 6,
+        "question": "Practical results over theory",
+        "answer": "N",
+        "eliminated_count": 8,
+        "active_cosmologies": 102,
+        "target_score": 103,
+        "target_rank": 6
+      },
+      {
+        "question_number": 7,
+        "question": "Consciousness emerges from physical processes",
+        "answer": "Y",
+        "eliminated_count": 22,
+        "active_cosmologies": 88,
+        "target_score": 113,
+        "target_rank": 6
+      },
+      {
+        "question_number": 8,
+        "question": "Reality as simulation/program",
+        "answer": "N",
+        "eliminated_count": 5,
+        "active_cosmologies": 105,
+        "target_score": 123,
+        "target_rank": 6
+      },
+      {
+        "question_number": 9,
+        "question": "True self is identical with ultimate reality",
+        "answer": "Y",
+        "eliminated_count": 13,
+        "active_cosmologies": 97,
+        "target_score": 126,
+        "target_rank": 6
+      },
+      {
+        "question_number": 10,
+        "question": "Aliens intervened in human evolution",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 108,
+        "target_score": 136,
+        "target_rank": 6
+      },
+      {
+        "question_number": 11,
+        "question": "Self and world not separate",
+        "answer": "N",
+        "eliminated_count": 9,
+        "active_cosmologies": 101,
+        "target_score": 146,
+        "target_rank": 3
+      },
+      {
+        "question_number": 12,
+        "question": "Major religions accurate in essence",
+        "answer": "N",
+        "eliminated_count": 14,
+        "active_cosmologies": 96,
+        "target_score": 156,
+        "target_rank": 3
+      },
+      {
+        "question_number": 13,
+        "question": "Reality divided between spirit and matter",
+        "answer": "N",
+        "eliminated_count": 2,
+        "active_cosmologies": 108,
+        "target_score": 166,
+        "target_rank": 3
+      },
+      {
+        "question_number": 14,
+        "question": "Consciousness creates reality",
+        "answer": "N",
+        "eliminated_count": 6,
+        "active_cosmologies": 104,
+        "target_score": 176,
+        "target_rank": 3
+      },
+      {
+        "question_number": 15,
+        "question": "Ultimate reality beyond concepts",
+        "answer": "N",
+        "eliminated_count": 9,
+        "active_cosmologies": 101,
+        "target_score": 186,
+        "target_rank": 2
+      }
+    ]
+  }
+}
