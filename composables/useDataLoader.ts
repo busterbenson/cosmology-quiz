@@ -31,16 +31,33 @@ export const useDataLoader = () => {
         hasCosmologies: !!rawCosmologiesData.cosmologies,
         type: typeof rawCosmologiesData,
         keys: Object.keys(rawCosmologiesData || {}),
-        cosmologiesLength: rawCosmologiesData.cosmologies?.length
+        cosmologiesLength: rawCosmologiesData.cosmologies?.length,
+        isArray: Array.isArray(rawCosmologiesData),
+        firstKey: Object.keys(rawCosmologiesData || {})[0]
       });
       
-      // Ensure cosmologies array exists
-      if (!rawCosmologiesData.cosmologies || !Array.isArray(rawCosmologiesData.cosmologies)) {
-        throw new Error(`Invalid cosmologies data structure. Expected array, got: ${typeof rawCosmologiesData.cosmologies}`);
+      // Handle different data formats (direct array vs object with cosmologies property)
+      let cosmologiesArray: any[];
+      if (Array.isArray(rawCosmologiesData)) {
+        // Direct array format
+        cosmologiesArray = rawCosmologiesData;
+      } else if (rawCosmologiesData.cosmologies && Array.isArray(rawCosmologiesData.cosmologies)) {
+        // Object with cosmologies property
+        cosmologiesArray = rawCosmologiesData.cosmologies;
+      } else if (typeof rawCosmologiesData === 'object' && Object.keys(rawCosmologiesData).length > 0) {
+        // Object with numeric keys (converted array)
+        cosmologiesArray = Object.values(rawCosmologiesData);
+      } else {
+        throw new Error(`Invalid cosmologies data structure. Expected array or object with cosmologies property`);
       }
       
+      console.log('Using cosmologies array:', {
+        length: cosmologiesArray.length,
+        firstItem: cosmologiesArray[0]
+      });
+      
       // Transform the raw data into the flat structure the app expects
-      const transformedCosmologies = rawCosmologiesData.cosmologies.map((cosmo: any) => {
+      const transformedCosmologies = cosmologiesArray.map((cosmo: any) => {
         return {
           Order: String(cosmo.order),
           Category: cosmo.category,
