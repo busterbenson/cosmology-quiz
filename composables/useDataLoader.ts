@@ -18,12 +18,13 @@ export const useDataLoader = () => {
     error.value = null
 
     try {
-      // Load all data files in parallel
+      // Load all data files in parallel with cache busting
+      const cacheBuster = `?v=${Date.now()}`
       const [rawCosmologiesData, questionsData, summariesData, descriptionsData] = await Promise.all([
-        $fetch<any>('/data/cosmology_features.json'),
-        $fetch<QuestionLibrary>('/data/question_library_v3.json'),
-        $fetch<CosmologyDescription>('/data/description_library.json'),
-        $fetch<CategoryDescription>('/data/full_description_library.json')
+        $fetch<any>(`/data/cosmology_features.json${cacheBuster}`),
+        $fetch<QuestionLibrary>(`/data/question_library_v3.json${cacheBuster}`),
+        $fetch<CosmologyDescription>(`/data/description_library.json${cacheBuster}`),
+        $fetch<CategoryDescription>(`/data/full_description_library.json${cacheBuster}`)
       ]);
       
       // Debug logging for production issues
