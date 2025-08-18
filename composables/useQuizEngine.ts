@@ -71,12 +71,12 @@ export const useQuizEngine = () => {
     const topCosmologies = getTopActiveCosmologies()
 
     // Debug logging
-    // console.log('Finding next question:', {
-    //   activeCosmologies: activeCosmologies.length,
-    //   potentialQuestions: potentialQuestions.length,
-    //   questionsLoaded: Object.keys(dataLoader.questions.value).length,
-    //   cosmologiesLoaded: dataLoader.cosmologies.value.length
-    // })
+    console.log('Finding next question:', {
+      activeCosmologies: activeCosmologies.length,
+      potentialQuestions: potentialQuestions.length,
+      questionsLoaded: Object.keys(dataLoader.questions.value).length,
+      cosmologiesLoaded: dataLoader.cosmologies.value.length
+    })
 
     if (potentialQuestions.length === 0 || activeCosmologies.length <= 1) {
       currentQuestion.value = null
@@ -758,13 +758,13 @@ export const useQuizEngine = () => {
       q in dataLoader.questions.value
     )
     
-    // console.log('Question filtering debug:', {
-    //   allColumns: questionColumns.length,
-    //   askedQuestions: quizState.value.askedQuestions,
-    //   questionsInLibrary: Object.keys(dataLoader.questions.value).length,
-    //   filteredCount: filtered.length,
-    //   sampleFiltered: filtered.slice(0, 5)
-    // })
+    console.log('Question filtering debug:', {
+      allColumns: questionColumns.length,
+      askedQuestions: quizState.value.askedQuestions,
+      questionsInLibrary: Object.keys(dataLoader.questions.value).length,
+      filteredCount: filtered.length,
+      sampleFiltered: filtered.slice(0, 5)
+    })
     
     return filtered
   }
