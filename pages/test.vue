@@ -45,22 +45,58 @@
         >
           {{ testing ? 'Testing...' : `Test ${selectedCosmology || 'Selected Cosmology'}` }}
         </button>
-        
+                
         <div v-if="results" class="mt-6">
           <h3 class="text-lg font-bold mb-2 text-white">Results:</h3>
           <div class="bg-white/5 rounded p-4">
-            <p class="text-sm text-gray-300 mb-2">
-              <strong>Questions Asked:</strong> {{ results.totalQuestions }}
-            </p>
-            <p class="text-sm text-gray-300 mb-2">
-              <strong>Answer String:</strong> {{ results.answerString }}
-            </p>
-            <p class="text-sm text-gray-300 mb-4">
-              <strong>Permalink:</strong> 
-              <a :href="results.permalink" target="_blank" class="text-cosmic-gold underline">
-                {{ results.permalink }}
-              </a>
-            </p>
+            
+            <!-- Top 10 Results - MOVED TO TOP -->
+            <div class="mb-6">
+              <h4 class="text-md font-bold mb-3 text-white">🏆 Top 10 Results:</h4>
+              <div class="space-y-1">
+                <div 
+                  v-for="(result, index) in results.finalResults.slice(0, 10)" 
+                  :key="result.cosmology"
+                  class="flex justify-between items-center p-2 bg-white/5 rounded"
+                  :class="{ 'bg-cosmic-gold/20': result.cosmology === targetCosmology }"
+                >
+                  <span class="text-white">
+                    {{ index + 1 }}. {{ result.cosmology }}
+                    <span v-if="result.cosmology === targetCosmology" class="text-cosmic-gold">⭐</span>
+                  </span>
+                  <span class="text-cosmic-gold font-bold">{{ result.score }}</span>
+                </div>
+              </div>
+              
+              <div v-if="targetCosmology" class="mt-4 p-3 bg-cosmic-purple/20 rounded">
+                <p class="text-white font-bold">
+                  {{ targetCosmology }}: 
+                  <span v-if="targetRank">
+                    Rank #{{ targetRank }}, Score {{ targetScore }}
+                  </span>
+                  <span v-else class="text-red-400">
+                    Not found in results
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Quiz Metadata -->
+            <div class="mb-4 p-3 bg-gray-500/20 rounded">
+              <h4 class="text-sm font-bold text-white mb-2">📊 Quiz Summary:</h4>
+              <p class="text-sm text-gray-300 mb-1">
+                <strong>Questions Asked:</strong> {{ results.totalQuestions }}
+              </p>
+              <p class="text-sm text-gray-300 mb-1">
+                <strong>Answer String:</strong> {{ results.answerString }}
+              </p>
+              <p class="text-sm text-gray-300">
+                <strong>Permalink:</strong> 
+                <a :href="results.permalink" target="_blank" class="text-cosmic-gold underline">
+                  {{ results.permalink }}
+                </a>
+              </p>
+            </div>
             
             <!-- Show Generated Profile Summary -->
             <div v-if="generatedProfile" class="mb-4 p-3 bg-blue-500/20 rounded">
@@ -81,11 +117,39 @@
               </details>
             </div>
             
+            <!-- Show Coverage Phase Analysis -->
+            <div v-if="results.questionsAsked" class="mb-4 p-3 bg-blue-500/20 rounded">
+              <h4 class="text-sm font-bold text-white mb-2">📋 Coverage Phase Analysis:</h4>
+              <div class="text-xs text-gray-300">
+                <div class="mb-2">
+                  <strong>Representative Questions Asked:</strong>
+                  <div class="ml-4 mt-1">
+                    <div v-for="(question, index) in coverageQuestionsAsked" :key="index" class="py-1">
+                      <span class="text-blue-400">📋</span> 
+                      <span :class="question.answer === 'Y' ? 'text-green-400' : question.answer === 'N' ? 'text-red-400' : 'text-yellow-400'">
+                        {{ question.answer }}
+                      </span> - {{ question.question }} ({{ question.category }} category)
+                    </div>
+                    <div v-if="coverageQuestionsAsked.length === 0" class="text-gray-400 italic">
+                      No coverage questions were prioritized in this quiz.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <strong>Target Category Group:</strong> {{ targetCategoryGroup || 'N/A' }}
+                </div>
+                <div v-if="targetCategoryGroup">
+                  <strong>Representative Question for Target:</strong> {{ representativeQuestionForTarget || 'N/A' }}
+                </div>
+              </div>
+            </div>
+
             <!-- Show Questions Actually Asked -->
             <div v-if="results.questionsAsked" class="mb-4 p-3 bg-purple-500/20 rounded">
               <h4 class="text-sm font-bold text-white mb-2">Questions Actually Asked:</h4>
               <div class="max-h-40 overflow-y-auto text-xs text-gray-300">
                 <div v-for="(question, index) in results.questionsAsked" :key="index" class="py-1">
+                  <span v-if="isCoverageQuestion(question)" class="text-blue-400">📋</span>
                   <span :class="results.answersGiven[index] === 'Y' ? 'text-green-400' : results.answersGiven[index] === 'N' ? 'text-red-400' : 'text-yellow-400'">
                     {{ results.answersGiven[index] }}
                   </span> - {{ question }}
@@ -114,33 +178,6 @@
               </div>
             </div>
             
-            <h4 class="text-md font-bold mb-2 text-white">Top 10 Results:</h4>
-            <div class="space-y-1">
-              <div 
-                v-for="(result, index) in results.finalResults.slice(0, 10)" 
-                :key="result.cosmology"
-                class="flex justify-between items-center p-2 bg-white/5 rounded"
-                :class="{ 'bg-cosmic-gold/20': result.cosmology === targetCosmology }"
-              >
-                <span class="text-white">
-                  {{ index + 1 }}. {{ result.cosmology }}
-                  <span v-if="result.cosmology === targetCosmology" class="text-cosmic-gold">⭐</span>
-                </span>
-                <span class="text-cosmic-gold font-bold">{{ result.score }}</span>
-              </div>
-            </div>
-            
-            <div v-if="targetCosmology" class="mt-4 p-3 bg-cosmic-purple/20 rounded">
-              <p class="text-white font-bold">
-                {{ targetCosmology }}: 
-                <span v-if="targetRank">
-                  Rank #{{ targetRank }}, Score {{ targetScore }}
-                </span>
-                <span v-else class="text-red-400">
-                  Not found in results
-                </span>
-              </p>
-            </div>
           </div>
         </div>
         
@@ -206,6 +243,115 @@ const targetScore = computed(() => {
   if (!results.value || !targetCosmology.value) return null
   const result = results.value.finalResults.find((r: any) => r.cosmology === targetCosmology.value)
   return result?.score || null
+})
+
+// Coverage Phase analysis computeds
+const REPRESENTATIVE_QUESTIONS = {
+  'Theistic': 'One supreme being',
+  'Consciousness-Based': 'Consciousness fundamental to reality', 
+  'Materialistic': 'Physical matter/energy as fundamental',
+  'Spiritual-Naturalistic': 'Divine permeates and transcends universe',
+  'Gnostic-Esoteric': 'Reality divided between spirit and matter',
+  'Skeptical-Agnostic': 'Personal truth over dogma',
+  'Polytheistic-Indigenous': 'Multiple distinct deities',
+  'Alternative-Cosmological': 'Aliens intervened in human evolution',
+  'New-Age-Spiritual': 'Reality is energy/vibrational'
+}
+
+const MAJOR_CATEGORY_GROUPS = {
+  'Theistic': [
+    'Young Earth Creationism', 
+    'Theistic Evolution', 
+    'Deism', 
+    'Islamic Philosophical Cosmology'
+  ],
+  'Consciousness-Based': [
+    'Consciousness-First', 
+    'Non-Dual & Beyond-Concept',
+    'Non-Dual Traditions'
+  ],
+  'Materialistic': [
+    'Scientific Materialism', 
+    'Information-Theoretic Cosmology'
+  ],
+  'Spiritual-Naturalistic': [
+    'Spiritual Naturalism', 
+    'Pantheism', 
+    'Panentheism'
+  ],
+  'Gnostic-Esoteric': [
+    'Gnosticism/Esoteric Dualism'
+  ],
+  'Skeptical-Agnostic': [
+    'Agnostic Spiritual Seeker', 
+    'Unconventional Skeptic'
+  ],
+  'Polytheistic-Indigenous': [
+    'Polytheism', 
+    'Animism', 
+    'Traditional African Cosmologies', 
+    'Indigenous Relational Worldview',
+    'Traditional Daoist Cosmology',
+    'Jain Cosmology'
+  ],
+  'Alternative-Cosmological': [
+    'Simulation Hypothesis', 
+    'Multiverse Theory', 
+    'Ancient Astronaut Theory', 
+    'Flat Earth Conspiracy'
+  ],
+  'New-Age-Spiritual': [
+    'New Age Spiritualism'
+  ]
+}
+
+const isCoverageQuestion = (questionKey: string): boolean => {
+  return Object.values(REPRESENTATIVE_QUESTIONS).includes(questionKey)
+}
+
+const coverageQuestionsAsked = computed(() => {
+  if (!results.value) return []
+  
+  const coverageQuestions: Array<{question: string, answer: string, category: string}> = []
+  
+  results.value.questionsAsked.forEach((question: string, index: number) => {
+    if (isCoverageQuestion(question)) {
+      // Find which category this question represents
+      const categoryEntry = Object.entries(REPRESENTATIVE_QUESTIONS).find(([_, repQ]) => repQ === question)
+      const category = categoryEntry ? categoryEntry[0] : 'Unknown'
+      
+      coverageQuestions.push({
+        question,
+        answer: results.value.answersGiven[index],
+        category
+      })
+    }
+  })
+  
+  return coverageQuestions
+})
+
+const targetCategoryGroup = computed(() => {
+  if (!targetCosmology.value || !quizEngine.cosmologies.value.length) return null
+  
+  const cosmology = quizEngine.cosmologies.value.find(c => c.Cosmology === targetCosmology.value)
+  if (!cosmology) return null
+  
+  const category = cosmology.Category
+  
+  // Find which major category group this cosmology belongs to
+  for (const [groupName, categories] of Object.entries(MAJOR_CATEGORY_GROUPS)) {
+    if (categories.includes(category)) {
+      return groupName
+    }
+  }
+  
+  return null
+})
+
+const representativeQuestionForTarget = computed(() => {
+  if (!targetCategoryGroup.value) return null
+  return REPRESENTATIVE_QUESTIONS[targetCategoryGroup.value as keyof typeof REPRESENTATIVE_QUESTIONS] || null
 })
 
 const generateCosmologyProfile = (cosmologyName: string): Record<string, 'Y' | 'N' | '?'> => {

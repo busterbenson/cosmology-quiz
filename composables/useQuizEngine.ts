@@ -34,7 +34,9 @@ export const useQuizEngine = () => {
     lastEliminationCount: 0,
     noProgressCount: 0,
     tieBreakerMode: false,
-    tieBreakerQuestionsAsked: 0
+    tieBreakerQuestionsAsked: 0,
+    coverageQuestionsAsked: 0,
+    coveredCategoryGroups: []
   }))
 
   const isInitialized = useState('quiz-initialized', () => false)
@@ -185,6 +187,111 @@ export const useQuizEngine = () => {
       return false
     }
 
+    // Coverage Phase: Check if we should prioritize coverage questions
+    const coveragePhase = useCoveragePhase()
+    
+    // For coverage info, consider all active cosmologies
+    const allActiveCosmologies = activeCosmologies.map((cosmology, index) => ({
+      ...cosmology,
+      score: quizState.value.scores[dataLoader.cosmologies.value.findIndex(c => c === cosmology)],
+      rank: index + 1
+    })).sort((a, b) => b.score - a.score).map((c, index) => ({ ...c, rank: index + 1 }))
+    
+    const coverageInfo = coveragePhase.getCoverageInfo(allActiveCosmologies, quizState.value.askedQuestions)
+    const uncoveredCount = coverageInfo.totalUncoveredGroups
+    
+    const shouldEnterCoveragePhase = (
+      CONFIG.COVERAGE_PHASE_ENABLED &&
+      activeCosmologies.length <= CONFIG.COVERAGE_PHASE_TRIGGER_THRESHOLD &&
+      uncoveredCount > 0 &&  // Prioritize if there are still uncovered categories
+      quizState.value.coverageQuestionsAsked < CONFIG.COVERAGE_PHASE_MAX_QUESTIONS
+    )
+
+    // Enhanced Coverage Phase logging
+    if (CONFIG.COVERAGE_PHASE_ENABLED) {
+      const triggerConditions = {
+        cosmologiesRemaining: activeCosmologies.length,
+        triggerThreshold: CONFIG.COVERAGE_PHASE_TRIGGER_THRESHOLD,
+        belowThreshold: activeCosmologies.length <= CONFIG.COVERAGE_PHASE_TRIGGER_THRESHOLD,
+        inTieBreaker: quizState.value.tieBreakerMode,
+        uncoveredCount: uncoveredCount,
+        hasUncovered: uncoveredCount > 0,
+        questionsAsked: quizState.value.coverageQuestionsAsked,
+        maxQuestions: CONFIG.COVERAGE_PHASE_MAX_QUESTIONS,
+        underLimit: quizState.value.coverageQuestionsAsked < CONFIG.COVERAGE_PHASE_MAX_QUESTIONS
+      }
+      
+      console.log(`📋 Coverage Phase Status:`, {
+        enabled: CONFIG.COVERAGE_PHASE_ENABLED,
+        shouldEnter: shouldEnterCoveragePhase,
+        viableGroups: coverageInfo.totalViableGroups,
+        uncoveredGroups: coverageInfo.totalUncoveredGroups,
+        allCovered: coverageInfo.allGroupsCovered,
+        coveredCategories: quizState.value.coveredCategoryGroups,
+        triggerConditions
+      })
+    }
+
+    if (shouldEnterCoveragePhase) {      
+      const coverageQuestion = coveragePhase.findNextCoverageQuestion(allActiveCosmologies, quizState.value.askedQuestions)
+      const currentCoverageInfo = coveragePhase.getCoverageInfo(allActiveCosmologies, quizState.value.askedQuestions)
+      
+      console.log(`📋 Coverage Phase Details:`, {
+        nextQuestion: coverageQuestion,
+        isViable: coverageQuestion ? viableQuestions.includes(coverageQuestion) : false,
+        viableGroups: currentCoverageInfo.viableGroups.map(g => ({
+          group: g.group,
+          highestRank: g.highestRank,
+          cosmologies: g.cosmologies
+        })),
+        uncoveredGroups: currentCoverageInfo.uncoveredGroups.map(g => ({
+          group: g.group,
+          highestRank: g.highestRank,
+          representativeQuestion: coveragePhase.REPRESENTATIVE_QUESTIONS[g.group as keyof typeof coveragePhase.REPRESENTATIVE_QUESTIONS]
+        }))
+      })
+      
+      if (coverageQuestion && viableQuestions.includes(coverageQuestion)) {
+        const question = dataLoader.questions.value[coverageQuestion]
+        if (question) {
+          const impact = questionScoring.scoreQuestion(
+            coverageQuestion,
+            question,
+            activeCosmologies,
+            quizState.value.convictionProfile,
+            quizState.value.askedConcepts,
+            quizState.value.dontKnowCount,
+            topCosmologies,
+            quizState.value.tieBreakerMode
+          )
+          
+          // Find which category this question represents
+          const categoryGroup = Object.entries(coveragePhase.REPRESENTATIVE_QUESTIONS).find(
+            ([group, repQ]) => repQ === coverageQuestion
+          )?.[0]
+          
+          console.log(`📋 Coverage Phase: Selected "${coverageQuestion}" for category "${categoryGroup}"`)
+          console.log(`   Score breakdown: boost +${impact.coverageBoost}, total ${impact.totalScore.toFixed(1)}`)
+          console.log(`   This ensures representation for category group with cosmologies:`, 
+            currentCoverageInfo.viableGroups.find(g => g.group === categoryGroup)?.cosmologies || []
+          )
+          
+          currentQuestion.value = {
+            key: coverageQuestion,
+            question: question,
+            impact: impact
+          }
+          return true
+        }
+      } else {
+        if (!coverageQuestion) {
+          console.log(`📋 Coverage Phase: No uncovered viable questions found (${currentCoverageInfo.totalUncoveredGroups} uncovered groups, but no representative questions available)`)
+        } else {
+          console.log(`📋 Coverage Phase: Question "${coverageQuestion}" not viable (filtered out by concept rejection or other filters)`)
+        }
+      }
+    }
+
     // Score all viable questions
     let bestQuestion: string | null = null
     let bestScore = -1
@@ -306,7 +413,7 @@ export const useQuizEngine = () => {
     return false
   }
 
-  const answerQuestion = async (answer: QuizAnswer): Promise<void> => {
+  const answerQuestion = async (answer: QuizAnswer): Promise<{ eliminatedCosmologies: string[] } | void> => {
     if (!currentQuestion.value) return
 
     const questionKey = currentQuestion.value.key
@@ -318,6 +425,8 @@ export const useQuizEngine = () => {
       return
     }
 
+    const scoresBefore = [...quizState.value.scores]
+
     // Save state before processing answer
     saveStateSnapshot(questionKey, answer)
 
@@ -326,8 +435,21 @@ export const useQuizEngine = () => {
     if (quizState.value.tieBreakerMode) {
       quizState.value.tieBreakerQuestionsAsked++
     }
+    
+    // Track coverage questions
+    const coveragePhase = useCoveragePhase()
+    if (coveragePhase.isCoverageQuestion(questionKey)) {
+      quizState.value.coverageQuestionsAsked++
+      const categoryGroup = Object.entries(coveragePhase.REPRESENTATIVE_QUESTIONS).find(
+        ([group, repQ]) => repQ === questionKey
+      )?.[0]
+      if (categoryGroup && !quizState.value.coveredCategoryGroups.includes(categoryGroup)) {
+        quizState.value.coveredCategoryGroups.push(categoryGroup)
+      }
+    }
+    
     quizState.value.sessionAnswers.push({
-      question: questionKey,
+      questionId: question.id,
       answer
     })
 
@@ -338,11 +460,8 @@ export const useQuizEngine = () => {
       quizState.value.dontKnowCount = 0 // Reset on definitive answer
     }
 
-    // Count eliminations before processing answer
-    const eliminationsBefore = quizState.value.scores.filter(s => s <= CONFIG.SCORE_ELIMINATE).length
-
     // Process the answer and update scores
-    const { eliminated, newScores, boosted } = questionScoring.processAnswer(
+    const { newScores, boosted } = questionScoring.processAnswer(
       questionKey,
       answer,
       dataLoader.cosmologies.value,
@@ -359,24 +478,31 @@ export const useQuizEngine = () => {
       processExclusions(question.excludes, boosted)
     }
 
-    // Apply concept boosts and eliminations (but protect recently boosted cosmologies)
+    // Apply concept boosts and eliminations
     applyConceptBoosts()
-    const conceptEliminations = eliminateRejectedConceptCosmologies(boosted)
+    eliminateRejectedConceptCosmologies(boosted)
 
     // Mark question as asked
     quizState.value.askedQuestions.push(questionKey)
 
-    // Count eliminations after processing (including concept eliminations)
-    const eliminationsAfter = quizState.value.scores.filter(s => s <= CONFIG.SCORE_ELIMINATE).length
-    const eliminatedThisRound = eliminationsAfter - eliminationsBefore
-    
-    // console.log(`📈 Elimination tracking: ${eliminationsBefore} → ${eliminationsAfter} (${eliminatedThisRound} eliminated)`)
-    
-    // Update progress tracking with actual elimination count
-    updateProgressTracking(eliminatedThisRound)
+    // Determine which cosmologies were just eliminated
+    const eliminatedCosmologies = dataLoader.cosmologies.value
+      .filter((cosmology, index) => {
+        const scoreBefore = scoresBefore[index]
+        const scoreAfter = quizState.value.scores[index]
+        return scoreBefore > CONFIG.SCORE_ELIMINATE && scoreAfter <= CONFIG.SCORE_ELIMINATE
+      })
+      .map(c => c.Cosmology)
+
+    // Update progress tracking
+    updateProgressTracking(eliminatedCosmologies.length)
 
     // Find next question
     await findNextQuestion()
+
+    return {
+      eliminatedCosmologies
+    }
   }
 
   const updateConvictionProfile = (question: any, answer: QuizAnswer): void => {
@@ -456,6 +582,20 @@ export const useQuizEngine = () => {
             // Protect cosmologies that were just boosted in this answer cycle
             if (boostedNames && boostedNames.has(cosmology.Cosmology)) {
               return
+            }
+
+            // Protect materialist cosmologies from "traditional god" concept elimination
+            // These cosmologies interpret god-related questions in non-theistic ways
+            if (conceptTag === 'traditional god') {
+              const materialistCosmologies = [
+                'Emergent Materialism', 'Reductive Materialism', 'Scientific Materialism',
+                'Physicalism', 'Naturalistic Evolution', 'Quantum Many-Worlds',
+                'Computational Universe', 'Information-Theoretic Cosmology'
+              ]
+              if (materialistCosmologies.includes(cosmology.Cosmology)) {
+                console.log(`🛡️ Protected ${cosmology.Cosmology} from "traditional god" concept elimination (materialist interpretation)`)
+                return
+              }
             }
 
             const relation = cosmology[questionKey]
@@ -543,7 +683,9 @@ export const useQuizEngine = () => {
       lastEliminationCount: quizState.value.lastEliminationCount,
       noProgressCount: quizState.value.noProgressCount,
       tieBreakerMode: quizState.value.tieBreakerMode,
-      tieBreakerQuestionsAsked: quizState.value.tieBreakerQuestionsAsked
+      tieBreakerQuestionsAsked: quizState.value.tieBreakerQuestionsAsked,
+      coverageQuestionsAsked: quizState.value.coverageQuestionsAsked,
+      coveredCategoryGroups: [...quizState.value.coveredCategoryGroups]
     }
     quizState.value.questionHistory.push(snapshot)
   }
@@ -568,6 +710,8 @@ export const useQuizEngine = () => {
     quizState.value.noProgressCount = lastSnapshot.noProgressCount
     quizState.value.tieBreakerMode = lastSnapshot.tieBreakerMode
     quizState.value.tieBreakerQuestionsAsked = lastSnapshot.tieBreakerQuestionsAsked
+    quizState.value.coverageQuestionsAsked = lastSnapshot.coverageQuestionsAsked
+    quizState.value.coveredCategoryGroups = lastSnapshot.coveredCategoryGroups
 
     // Remove the last answer from session
     quizState.value.sessionAnswers.pop()
@@ -800,6 +944,98 @@ export const useQuizEngine = () => {
     }
   }
 
+  const resetQuiz = (): void => {
+    quizState.value = {
+      scores: [],
+      askedQuestions: ['Order', 'Category', 'Cosmology'],
+      sessionAnswers: [],
+      convictionProfile: createSerializableObject({}),
+      askedConcepts: [],
+      dontKnowCount: 0,
+      questionNumber: 0,
+      questionHistory: [],
+      rankingHistory: [],
+      rankingStabilityCount: 0,
+      lastEliminationCount: 0,
+      noProgressCount: 0,
+      tieBreakerMode: false,
+      tieBreakerQuestionsAsked: 0,
+      coverageQuestionsAsked: 0,
+      coveredCategoryGroups: []
+    }
+    currentQuestion.value = null
+  }
+
+  const reconstructQuiz = async (answerPairs: Array<{id: number, answer: QuizAnswer}>): Promise<void> => {
+    console.log('🔄 Reconstructing quiz from permalink with', answerPairs.length, 'answers')
+    
+    // Reset quiz state
+    resetQuiz()
+    
+    // Initialize scores array with starting values (0 for all cosmologies)
+    quizState.value.scores = new Array(dataLoader.cosmologies.value.length).fill(0)
+    console.log('✅ Initialized scores array with', quizState.value.scores.length, 'entries')
+    
+    // Build question ID map
+    const questionIdMap = new Map<number, string>()
+    for (const [key, question] of Object.entries(dataLoader.questions.value)) {
+      if ((question as any).id) {
+        questionIdMap.set((question as any).id, key)
+      }
+    }
+    console.log('📝 Built question ID map with', questionIdMap.size, 'entries')
+    console.log('📋 Sample questions:', Object.keys(dataLoader.questions.value).slice(0, 3))
+    
+    // Process each answer in sequence by simulating the quiz flow
+    for (const pair of answerPairs) {
+      const questionKey = questionIdMap.get(pair.id)
+      if (questionKey && dataLoader.questions.value[questionKey]) {
+        console.log(`🎯 Processing answer: Q${pair.id} (${questionKey}) = ${pair.answer}`)
+        
+        // Set the current question to simulate the normal quiz flow
+        const question = dataLoader.questions.value[questionKey]
+        
+        // Validate question structure
+        if (!question.concepts || !Array.isArray(question.concepts)) {
+          console.error(`❌ Question ${questionKey} has invalid concepts:`, question.concepts)
+          continue
+        }
+        
+        const activeCosmologies = getActiveCosmologies()
+        const questionScore = questionScoring.scoreQuestion(
+          questionKey,
+          question,
+          activeCosmologies,
+          quizState.value.convictionProfile,
+          quizState.value.askedConcepts,
+          quizState.value.dontKnowCount
+        )
+        currentQuestion.value = {
+          key: questionKey,
+          question,
+          impact: questionScore
+        }
+        
+        // Store the answer in session answers for permalink generation
+        quizState.value.sessionAnswers.push({
+          questionId: pair.id,
+          answer: pair.answer
+        })
+        
+        // Now answer the question
+        await answerQuestion(pair.answer)
+      } else {
+        console.warn(`⚠️ Could not find question for ID ${pair.id}`)
+      }
+    }
+    
+    // Clear current question after reconstruction
+    currentQuestion.value = null
+    
+    console.log('🏁 Quiz reconstruction complete. Final scores sample:', quizState.value.scores.slice(0, 5))
+    console.log('📊 Active cosmologies:', getActiveCosmologies().length)
+  }
+
   const runAutoQuiz = async (answerProfile: Record<string, QuizAnswer>, targetCosmology?: string): Promise<{
     questionsAsked: string[]
     answersGiven: QuizAnswer[]
@@ -836,6 +1072,8 @@ export const useQuizEngine = () => {
     quizState.value.noProgressCount = 0
     quizState.value.tieBreakerMode = false
     quizState.value.tieBreakerQuestionsAsked = 0
+    quizState.value.coverageQuestionsAsked = 0
+    quizState.value.coveredCategoryGroups = []
     
     const questionsAsked: string[] = []
     const answersGiven: QuizAnswer[] = []
@@ -972,14 +1210,10 @@ export const useQuizEngine = () => {
     const finalResults = getResults()
     
     // Generate answer string and permalink
-    const answerString = answersGiven.map(a => {
-      switch (a) {
-        case 'Y': return 'Y'
-        case 'N': return 'N'
-        case '?': return 'U'
-        default: return 'N'
-      }
-    }).join('')
+    const answerString = quizState.value.sessionAnswers.map(sa => {
+      const answerChar = sa.answer === 'Y' ? 'Y' : sa.answer === 'N' ? 'N' : 'U'
+      return `${sa.questionId}${answerChar}`
+    }).join('.')
     
     const permalink = `${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'}/results?answers=${answerString}`
     
@@ -1020,6 +1254,8 @@ export const useQuizEngine = () => {
     getProgress,
     getActiveCosmologies,
     findNextQuestion,
-    runAutoQuiz
+    runAutoQuiz,
+    reconstructQuiz,
+    resetQuiz
   }
 }

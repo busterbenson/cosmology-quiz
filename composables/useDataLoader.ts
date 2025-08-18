@@ -19,17 +19,27 @@ export const useDataLoader = () => {
 
     try {
       // Load all data files in parallel
-      const [cosmologiesData, questionsData, summariesData, descriptionsData] = await Promise.all([
-        $fetch<Cosmology[]>('/data/cosmology_features.json'),
+      const [rawCosmologiesData, questionsData, summariesData, descriptionsData] = await Promise.all([
+        $fetch<any>('/data/cosmology_features.json'),
         $fetch<QuestionLibrary>('/data/question_library_v3.json'),
         $fetch<CosmologyDescription>('/data/description_library.json'),
         $fetch<CategoryDescription>('/data/full_description_library.json')
-      ])
+      ]);
+      
+      // Transform the raw data into the flat structure the app expects
+      const transformedCosmologies = rawCosmologiesData.cosmologies.map((cosmo: any) => {
+        return {
+          Order: String(cosmo.order),
+          Category: cosmo.category,
+          Cosmology: cosmo.cosmology,
+          ...cosmo.assignments
+        };
+      });
 
-      cosmologies.value = cosmologiesData
-      questions.value = questionsData
-      summaries.value = summariesData
-      fullDescriptions.value = descriptionsData
+      cosmologies.value = transformedCosmologies;
+      questions.value = questionsData;
+      summaries.value = summariesData;
+      fullDescriptions.value = descriptionsData;
 
       // Validate data
       const isValid = validateData()
@@ -60,6 +70,10 @@ export const useDataLoader = () => {
     // Check required columns
     const requiredCols = ['Order', 'Category', 'Cosmology']
     const firstCosmology = cosmologies.value[0]
+    if (!firstCosmology) {
+      console.error('Cosmology data is empty or invalid.')
+      return false
+    }
     for (const col of requiredCols) {
       if (!(col in firstCosmology)) {
         console.error(`Missing required column: ${col}`)

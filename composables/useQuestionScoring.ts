@@ -32,7 +32,7 @@ export const useQuestionScoring = () => {
   const calculateDifferentiationScore = (
     questionKey: string,
     topCosmologies: Array<Cosmology & { score: number, rank: number }>
-  ): { differentiationScore: number, differentiationEfficiency: number, boostedCount: number, requiredQuestionBoost: number, requiredCosmologyMatches: number } => {
+  ): { differentiationScore: number, differentiationEfficiency: number, boostedCount: number, requiredQuestionBoost: number, requiredCosmologyMatches: number, coverageBoost: number, isCoverageQuestion: boolean } => {
     // Count how many top cosmologies would be boosted by this question
     const boostedCosmologies = topCosmologies.filter(c => 
       c[questionKey] === 'R' || c[questionKey] === 'DB'
@@ -40,7 +40,7 @@ export const useQuestionScoring = () => {
     const boostedCount = boostedCosmologies.length
     
     if (topCosmologies.length === 0) {
-      return { differentiationScore: 0, differentiationEfficiency: 0, boostedCount: 0, requiredQuestionBoost: 0, requiredCosmologyMatches: 0 }
+      return { differentiationScore: 0, differentiationEfficiency: 0, boostedCount: 0, requiredQuestionBoost: 0, requiredCosmologyMatches: 0, coverageBoost: 0, isCoverageQuestion: false }
     }
     
     // Calculate boost ratio (what percentage of top cosmologies get boosted)
@@ -83,16 +83,27 @@ export const useQuestionScoring = () => {
       }
     }
     
-    // Combine traditional differentiation with Required Question Boost
+    // Calculate Coverage Boost (for questions that represent major cosmology categories)
+    const coveragePhase = useCoveragePhase()
+    const isCoverageQuestion = coveragePhase.isCoverageQuestion(questionKey)
+    let coverageBoost = 0
+    
+    if (CONFIG.COVERAGE_PHASE_ENABLED && isCoverageQuestion) {
+      coverageBoost = CONFIG.COVERAGE_PHASE_BOOST_SCALE
+    }
+    
+    // Combine traditional differentiation with Required Question Boost and Coverage Boost
     const baseDifferentiationScore = weightedBoostPotential * differentiationEfficiency * 15
-    const totalDifferentiationScore = baseDifferentiationScore + requiredQuestionBoost
+    const totalDifferentiationScore = baseDifferentiationScore + requiredQuestionBoost + coverageBoost
     
     return { 
       differentiationScore: totalDifferentiationScore, 
       differentiationEfficiency, 
       boostedCount,
       requiredQuestionBoost,
-      requiredCosmologyMatches
+      requiredCosmologyMatches,
+      coverageBoost,
+      isCoverageQuestion
     }
   }
   
@@ -139,12 +150,14 @@ export const useQuestionScoring = () => {
       predictablePenalty = CONFIG.PREDICTABLE_QUESTION_PENALTY
     }
     
-    // Calculate differentiation score (includes Required Question Boost) if top cosmologies are provided
+    // Calculate differentiation score (includes Required Question Boost and Coverage Boost) if top cosmologies are provided
     let differentiationScore = 0
     let differentiationEfficiency = 0
     let boostedCount = 0
     let requiredQuestionBoost = 0
     let requiredCosmologyMatches = 0
+    let coverageBoost = 0
+    let isCoverageQuestion = false
     
     if (topCosmologies && topCosmologies.length > 0) {
       const diffResult = calculateDifferentiationScore(questionKey, topCosmologies)
@@ -153,6 +166,8 @@ export const useQuestionScoring = () => {
       boostedCount = diffResult.boostedCount
       requiredQuestionBoost = diffResult.requiredQuestionBoost
       requiredCosmologyMatches = diffResult.requiredCosmologyMatches
+      coverageBoost = diffResult.coverageBoost
+      isCoverageQuestion = diffResult.isCoverageQuestion
     }
     
     // Determine game phase and weights based on remaining cosmologies and tie-breaker mode
@@ -216,7 +231,9 @@ export const useQuestionScoring = () => {
       differentiationEfficiency,
       boostedCount,
       requiredQuestionBoost,
-      requiredCosmologyMatches
+      requiredCosmologyMatches,
+      coverageBoost,
+      isCoverageQuestion
     }
   }
 

@@ -23,6 +23,7 @@ export interface Question {
   clarification: string
   concepts: QuestionConcept[]
   excludes?: QuestionExcludes
+  id?: number
 }
 
 export interface QuestionLibrary {
@@ -50,7 +51,7 @@ export interface ConvictionProfile {
 export interface QuizState {
   scores: number[]
   askedQuestions: string[]
-  sessionAnswers: Array<{ question: string; answer: string }>
+  sessionAnswers: Array<{ questionId: number; answer: string }>
   convictionProfile: ConvictionProfile
   askedConcepts: string[] // Changed from Set to Array for serialization
   dontKnowCount: number
@@ -62,6 +63,8 @@ export interface QuizState {
   noProgressCount: number // How many consecutive questions with no eliminations AND no ranking changes
   tieBreakerMode: boolean // Whether we're in tie-breaking differentiation mode
   tieBreakerQuestionsAsked: number // How many questions asked in tie-breaker mode
+  coverageQuestionsAsked: number // How many coverage questions asked in this quiz
+  coveredCategoryGroups: string[] // Which major category groups have been covered
 }
 
 export interface QuizStateSnapshot {
@@ -79,6 +82,8 @@ export interface QuizStateSnapshot {
   noProgressCount: number
   tieBreakerMode: boolean
   tieBreakerQuestionsAsked: number
+  coverageQuestionsAsked: number
+  coveredCategoryGroups: string[]
 }
 
 export interface QuestionScore {
@@ -98,6 +103,8 @@ export interface QuestionScore {
   boostedCount?: number
   requiredQuestionBoost?: number
   requiredCosmologyMatches?: number
+  coverageBoost?: number
+  isCoverageQuestion?: boolean
 }
 
 export interface QuestionBonuses {
@@ -206,10 +213,10 @@ export const CONFIG = {
   
   // Coverage Phase System
   COVERAGE_PHASE_ENABLED: true,            // Master switch for coverage phase
-  COVERAGE_PHASE_TRIGGER_THRESHOLD: 30,    // Trigger when ≤ N cosmologies remain
+  COVERAGE_PHASE_TRIGGER_THRESHOLD: 80,    // Trigger when ≤ N cosmologies remain (increased from 30)
   COVERAGE_PHASE_TOP_N: 20,               // Consider categories with cosmologies in top N
   COVERAGE_PHASE_BOOST_SCALE: 500,        // Massive boost for coverage questions
-  COVERAGE_PHASE_MAX_QUESTIONS: 5,        // Maximum coverage questions per quiz
+  COVERAGE_PHASE_MAX_QUESTIONS: 9,        // Maximum coverage questions per quiz (increased from 5)
 } as const
 
 export type QuizAnswer = 'Y' | 'N' | '?' | 'B'

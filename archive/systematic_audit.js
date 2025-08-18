@@ -4,10 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 // Load cosmology data
-const rawData = JSON.parse(
+const cosmologyData = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'public/data/cosmology_features.json'), 'utf8')
 );
-const cosmologyData = rawData.cosmologies;
 
 // Validation criteria
 const VALIDATION_CRITERIA = {
@@ -42,7 +41,9 @@ const VALIDATION_CRITERIA = {
 };
 
 function analyzeCosmology(cosmology) {
-  const beliefs = Object.entries(cosmology.assignments || {});
+  const beliefs = Object.entries(cosmology).filter(([key, value]) => 
+    !['Order', 'Category', 'Cosmology'].includes(key)
+  );
   
   const required = beliefs.filter(([key, value]) => value === 'R');
   const opposed = beliefs.filter(([key, value]) => value === 'DB');
@@ -53,8 +54,8 @@ function analyzeCosmology(cosmology) {
   const density = (total / beliefs.length * 100);
   
   return {
-    cosmology: cosmology.cosmology,
-    category: cosmology.category,
+    cosmology: cosmology.Cosmology,
+    category: cosmology.Category,
     required: required.map(([k, v]) => k),
     opposed: opposed.map(([k, v]) => k),
     notRelated: notRelated.map(([k, v]) => k),
@@ -227,7 +228,7 @@ function generateWorkPlan(validations) {
 }
 
 function auditSpecificCosmology(cosmologyName) {
-  const cosmology = cosmologyData.find(c => c.cosmology === cosmologyName);
+  const cosmology = cosmologyData.find(c => c.Cosmology === cosmologyName);
   if (!cosmology) {
     console.log(`Cosmology "${cosmologyName}" not found.`);
     return;

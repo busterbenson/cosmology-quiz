@@ -25,3 +25,4 @@ node_modules
 convert_data.py
 convert_data_simple.py
 .vercel
+.gemini-clipboard

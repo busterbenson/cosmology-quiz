@@ -32,23 +32,27 @@
     <!-- Current Question -->
     <div v-else-if="currentQuestion" class="cosmic-card">
       <div class="p-6">
-        <h2 class="text-xl font-bold text-white mb-4">Question {{ progress.questionNumber + 1 }}</h2>
-        <h3 class="text-lg text-white mb-4">{{ currentQuestion.question.question }}</h3>
-        <p class="text-gray-300 mb-6">{{ currentQuestion.question.clarification }}</p>
+        <h2 class="text-sm font-bold text-gray-400 mb-2">Question {{ progress.questionNumber + 1 }}</h2>
+        <h3 class="text-2xl text-white mb-4">{{ currentQuestion.question.question }}</h3>
+        <p class="text-gray-300 mb-8 text-base">{{ currentQuestion.question.clarification }}</p>
         
-        <div class="flex gap-4">
-          <button @click="handleAnswer('Y')" class="bg-green-600 text-white px-4 py-2 rounded">
-            Yes
-          </button>
-          <button @click="handleAnswer('N')" class="bg-red-600 text-white px-4 py-2 rounded">
-            No
-          </button>
-          <button @click="handleAnswer('?')" class="bg-gray-600 text-white px-4 py-2 rounded">
-            Don't Know
-          </button>
-          <button @click="handleAnswer('B')" class="bg-blue-600 text-white px-4 py-2 rounded" :disabled="!canGoBack">
-            Back
-          </button>
+        <div class="flex flex-col">
+          <div class="flex gap-4">
+            <button @click="handleAnswer('Y')" class="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Yes
+            </button>
+            <button @click="handleAnswer('N')" class="flex-1 bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              No
+            </button>
+            <button @click="handleAnswer('?')" class="flex-1 bg-gray-500 hover:bg-gray-400 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Don't Know
+            </button>
+          </div>
+          <div v-if="canGoBack" class="text-center mt-4">
+            <button @click="handleAnswer('B')" class="text-gray-400 hover:underline text-sm" :disabled="!canGoBack">
+              Back to previous question
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -61,96 +65,49 @@
       </button>
     </div>
 
-    <!-- Conceptual Profile -->
-    <ConceptualProfile 
-      v-if="hasConvictions"
-      :conviction-profile="quizEngine.quizState.value.convictionProfile"
-      :updated-concepts="recentlyUpdatedConcepts"
-      class="mt-8"
-    />
-
+    <!-- Cosmology Constellation -->
+    <div v-if="quizEngine.isInitialized.value && !isComplete" class="mt-8">
+      <CosmologyConstellation
+        :cosmologies="quizEngine.cosmologies.value"
+        :scores="quizEngine.quizState.value.scores"
+        :newly-eliminated="newlyEliminated"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { QuizAnswer } from '~/types'
-import { CONFIG } from '~/types'
+import CosmologyConstellation from './CosmologyConstellation.vue'
 
 const quizEngine = useQuizEngine()
 
-const recentlyUpdatedConcepts = ref<Set<string>>(new Set())
+const newlyEliminated = ref<string[]>([])
 
-const currentQuestion = computed(() => {
-  const question = quizEngine.currentQuestion.value
-  console.log('UI currentQuestion computed:', question ? `"${question.key}"` : 'null')
-  return question
-})
+const currentQuestion = computed(() => quizEngine.currentQuestion.value)
 const progress = computed(() => quizEngine.getProgress())
 const canGoBack = computed(() => quizEngine.quizState.value.questionHistory.length > 0)
-const hasConvictions = computed(() => Object.keys(quizEngine.quizState.value.convictionProfile).length > 0)
 
 const isComplete = computed(() => {
-  // Don't mark as complete if quiz engine isn't initialized yet
-  if (!quizEngine.isInitialized.value) {
-    console.log('Quiz not complete: not initialized')
-    return false
-  }
-  
-  // Don't mark as complete until we've asked at least one question
-  if (quizEngine.quizState.value.questionNumber === 0 && !currentQuestion.value) {
-    console.log('Quiz not complete: no questions asked yet, waiting for first question')
-    return false
-  }
+  if (!quizEngine.isInitialized.value) return false
+  if (quizEngine.quizState.value.questionNumber === 0 && !currentQuestion.value) return false
   
   const shouldStop = quizEngine.shouldStopQuiz()
   const noQuestion = !currentQuestion.value
   const hasAskedQuestions = quizEngine.quizState.value.questionNumber > 0
   
-  console.log('Quiz completion check:', {
-    shouldStop,
-    noQuestion,
-    hasAskedQuestions,
-    currentQuestionExists: !!currentQuestion.value,
-    questionNumber: quizEngine.quizState.value.questionNumber
-  })
-  
-  const isComplete = shouldStop || (noQuestion && hasAskedQuestions)
-  console.log('Quiz is complete:', isComplete)
-  return isComplete
+  return shouldStop || (noQuestion && hasAskedQuestions)
 })
 
 const handleAnswer = async (answer: QuizAnswer) => {
   if (!currentQuestion.value) return
-
-  // Track which concepts were updated for highlighting
-  const beforeConcepts = new Set(Object.keys(quizEngine.quizState.value.convictionProfile))
+  const result = await quizEngine.answerQuestion(answer)
   
-  if (answer === 'B') {
-    // Handle back
-    const success = quizEngine.quizState.value.questionHistory.length > 0
-    if (success) {
-      await quizEngine.answerQuestion(answer)
-    }
-    recentlyUpdatedConcepts.value.clear()
+  if (result && result.eliminatedCosmologies) {
+    newlyEliminated.value = result.eliminatedCosmologies
   } else {
-    // Handle regular answer
-    const question = currentQuestion.value.question
-    const newConcepts = new Set<string>()
-    
-    if (answer !== '?') {
-      for (const concept of question.concepts) {
-        newConcepts.add(concept.tag)
-      }
-    }
-
-    await quizEngine.answerQuestion(answer)
-    recentlyUpdatedConcepts.value = newConcepts
+    newlyEliminated.value = []
   }
-
-  // Clear updated concepts after a delay
-  setTimeout(() => {
-    recentlyUpdatedConcepts.value.clear()
-  }, 3000)
 }
 
 const showResults = () => {
