@@ -58,6 +58,7 @@ npm run preview
 
 ```bash
 npm run generate
+npx vercel --prod
 ```
 
 Then deploy the `dist` folder to Vercel or any static hosting service.

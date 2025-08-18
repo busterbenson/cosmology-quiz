@@ -26,6 +26,19 @@ export const useDataLoader = () => {
         $fetch<CategoryDescription>('/data/full_description_library.json')
       ]);
       
+      // Debug logging for production issues
+      console.log('Raw cosmologies data structure:', {
+        hasCosmologies: !!rawCosmologiesData.cosmologies,
+        type: typeof rawCosmologiesData,
+        keys: Object.keys(rawCosmologiesData || {}),
+        cosmologiesLength: rawCosmologiesData.cosmologies?.length
+      });
+      
+      // Ensure cosmologies array exists
+      if (!rawCosmologiesData.cosmologies || !Array.isArray(rawCosmologiesData.cosmologies)) {
+        throw new Error(`Invalid cosmologies data structure. Expected array, got: ${typeof rawCosmologiesData.cosmologies}`);
+      }
+      
       // Transform the raw data into the flat structure the app expects
       const transformedCosmologies = rawCosmologiesData.cosmologies.map((cosmo: any) => {
         return {
