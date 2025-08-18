@@ -18,8 +18,8 @@ export const useDataLoader = () => {
     error.value = null
 
     try {
-      // Load all data files in parallel with cache busting
-      const cacheBuster = `?v=${Date.now()}`
+      // Load all data files in parallel with deployment-specific cache busting
+      const cacheBuster = `?v=${process.env.VERCEL_GIT_COMMIT_SHA || 'dev'}`
       const [rawCosmologiesData, questionsData, summariesData, descriptionsData] = await Promise.all([
         $fetch<any>(`/data/cosmology_features.json${cacheBuster}`),
         $fetch<QuestionLibrary>(`/data/question_library_v3.json${cacheBuster}`),

@@ -1291,8 +1291,8 @@
     "id": 69
   },
   "Ancient monuments built by humans": {
-    "question": "Do you believe that ancient monuments like the pyramids were built by humans without extraterrestrial help?",
-    "clarification": "This is the mainstream historical and archaeological view.",
+    "question": "Do you believe that ancient monuments like the pyramids were built by humans?",
+    "clarification": "As opposed to them being built by ancient aliens, for example.",
     "concepts": [
       {
         "tag": "ancient aliens",
