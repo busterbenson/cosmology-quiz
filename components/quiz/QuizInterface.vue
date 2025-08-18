@@ -111,6 +111,13 @@ const handleAnswer = async (answer: QuizAnswer) => {
 }
 
 const showResults = () => {
-  navigateTo('/results')
+  // Generate answer string for permalink
+  const answerString = quizEngine.quizState.value.sessionAnswers.map((sa: any) => {
+    const answerChar = sa.answer === 'Y' ? 'Y' : sa.answer === 'N' ? 'N' : 'U'
+    return `${sa.questionId}${answerChar}`
+  }).join('.')
+  
+  // Navigate to results with answers parameter
+  navigateTo(`/results?answers=${answerString}`)
 }
 </script>
