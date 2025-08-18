@@ -53,7 +53,8 @@ export const useDataLoader = () => {
       
       console.log('Using cosmologies array:', {
         length: cosmologiesArray.length,
-        firstItem: cosmologiesArray[0]
+        firstItem: cosmologiesArray[0],
+        firstItemKeys: Object.keys(cosmologiesArray[0] || {})
       });
       
       // Transform the raw data into the flat structure the app expects
@@ -70,6 +71,13 @@ export const useDataLoader = () => {
       questions.value = questionsData;
       summaries.value = summariesData;
       fullDescriptions.value = descriptionsData;
+      
+      console.log('After transformation:', {
+        cosmologiesLength: cosmologies.value.length,
+        firstCosmology: cosmologies.value[0],
+        firstCosmologyKeys: Object.keys(cosmologies.value[0] || {}),
+        questionsKeys: Object.keys(questions.value).slice(0, 5)
+      });
 
       // Validate data
       const isValid = validateData()
@@ -136,13 +144,14 @@ export const useDataLoader = () => {
     
     const columns = Object.keys(firstCosmology).filter(col => !excludeCols.includes(col))
     
-    // console.log('Question columns debug:', {
-    //   totalColumns: Object.keys(firstCosmology).length,
-    //   excludedColumns: excludeCols,
-    //   questionColumns: columns.length,
-    //   sampleColumns: columns.slice(0, 5),
-    //   sampleQuestionKeys: Object.keys(questions.value).slice(0, 5)
-    // })
+    console.log('Question columns debug:', {
+      totalColumns: Object.keys(firstCosmology).length,
+      excludedColumns: excludeCols,
+      questionColumns: columns.length,
+      sampleColumns: columns.slice(0, 5),
+      firstCosmologyKeys: Object.keys(firstCosmology).slice(0, 10),
+      sampleQuestionKeys: Object.keys(questions.value).slice(0, 5)
+    })
     
     return columns
   }
