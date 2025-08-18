@@ -11,12 +11,12 @@
 Based on systematic audit (node systematic_audit.js):
 
 ### Summary Statistics
-- **Total Cosmologies**: 113
-- **Fully Audited**: 80 (70.8%)
-- **Need Expansion**: 33 (29.2%) 
-- **Critical Priority**: 16 cosmologies (≤5 assignments)
-- **High Priority**: 7 cosmologies (6-10 assignments)
-- **Medium Priority**: 10 cosmologies (11-15 assignments)
+- **Total Cosmologies**: 91 (reduced from 113 after removing 18 without descriptions + 4 non-dual cosmologies)
+- **Fully Audited**: Requires re-audit after cosmology removal
+- **Need Expansion**: TBD after re-audit
+- **Critical Priority**: TBD after re-audit
+- **High Priority**: TBD after re-audit  
+- **Medium Priority**: TBD after re-audit
 
 ## Critical Priority Cosmologies (≤5 assignments) - 16 total
 
