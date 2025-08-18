@@ -136,7 +136,7 @@
     "id": 5
   },
   "Evolution as primary mechanism": {
-    "question": "Do you believe that evolution by natural selection is the primary mechanism for the development of life?",
+    "question": "Do you believe life, from single-celled organisms to everything that exists today, developed mainly through evolution?",
     "clarification": "This aligns with the modern scientific synthesis explaining the diversity of life on Earth.",
     "concepts": [
       {
@@ -163,7 +163,7 @@
     "id": 6
   },
   "No macroevolution": {
-    "question": "Do you believe that while small adaptations can occur, one species cannot evolve into another (macroevolution)?",
+    "question": "Do you believe animals can change a little but not turn into completely different animals?",
     "clarification": "This view accepts small-scale changes (microevolution) but rejects the idea of common descent from a single ancestor.",
     "concepts": [
       {
@@ -229,7 +229,7 @@
     "id": 11
   },
   "God is impersonal/abstract": {
-    "question": "Do you conceive of God as an impersonal force or abstract principle rather than a distinct being?",
+    "question": "Do you think of God as a force rather than a being you could talk to?",
     "clarification": "This view sees the divine as the ground of being, a universal law, or a cosmic process, rather than a being with whom one can have a relationship.",
     "concepts": [
       {
@@ -330,17 +330,6 @@
       }
     ],
     "id": 17
-  },
-  "Divine permeates and transcends universe": {
-    "question": "Do you believe the divine is both within the universe and greater than it?",
-    "clarification": "This view suggests that the world is within the divine, but the divine is more than just the world.",
-    "concepts": [
-      {
-        "tag": "abstract god",
-        "polarity": "pro"
-      }
-    ],
-    "id": 18
   },
   "God and universe are identical": {
     "question": "Do you believe that the universe and God are one and the same?",
@@ -479,7 +468,7 @@
     "id": 25
   },
   "Individual minds as aspects of cosmic mind": {
-    "question": "Do you believe that individual minds are aspects or 'alters' of a single, universal cosmic mind?",
+    "question": "Do you believe all minds are a part of one big universal mind, but just experiencing separation from the universal mind?",
     "clarification": "This view suggests that our individual consciousness is like a whirlpool in a larger ocean of universal consciousness.",
     "concepts": [
       {
@@ -489,42 +478,8 @@
     ],
     "id": 26
   },
-  "Primordial awareness as ground of being": {
-    "question": "Do you believe that a primordial, pure awareness is the ultimate ground of all being?",
-    "clarification": "This concept, found in many mystical traditions, posits that the fundamental reality is a state of content-less, aware presence.",
-    "concepts": [
-      {
-        "tag": "consciousness",
-        "polarity": "pro"
-      },
-      {
-        "tag": "mysticism",
-        "polarity": "pro"
-      },
-      {
-        "tag": "materialism",
-        "polarity": "con"
-      },
-      {
-        "tag": "dualism",
-        "polarity": "con"
-      }
-    ],
-    "excludes": {
-      "questions": [
-        "Physical matter/energy as fundamental",
-        "Reality is energy/vibrational",
-        "Reality as simulation/program"
-      ],
-      "concepts": [
-        "materialism"
-      ],
-      "cosmologies": []
-    },
-    "id": 27
-  },
   "Structures of consciousness shape experience": {
-    "question": "Do you believe that the basic structures of reality (like space and time) are features of how our minds organize experience?",
+    "question": "Do you believe space and time are constructs of our mind and not actual elements of reality?",
     "clarification": "This idea suggests we don't experience the world 'as it is', but rather as it is filtered and structured by our own consciousness.",
     "concepts": [
       {
@@ -542,27 +497,8 @@
     ],
     "id": 28
   },
-  "Universe as extrinsic appearance of consciousness": {
-    "question": "Do you believe the universe is the extrinsic appearance of consciousness?",
-    "clarification": "This is a subtle idealist view suggesting the physical world is what universal consciousness looks like 'from the outside'.",
-    "concepts": [
-      {
-        "tag": "consciousness",
-        "polarity": "pro"
-      },
-      {
-        "tag": "materialism",
-        "polarity": "con"
-      },
-      {
-        "tag": "dualism",
-        "polarity": "con"
-      }
-    ],
-    "id": 29
-  },
   "Quantum effects demonstrate mind's primacy": {
-    "question": "Do you believe that quantum physics, particularly the observer effect, demonstrates the primacy of mind over matter?",
+    "question": "Do you believe quantum physics shows that consciousness itself, and observation, is what creates reality?",
     "clarification": "This interpretation suggests that the act of conscious observation is what brings physical reality into a definite state.",
     "concepts": [
       {
@@ -573,7 +509,7 @@
     "id": 30
   },
   "Transcendence of Subject-Object": {
-    "question": "Do you believe that ultimate reality transcends the division between subject (the observer) and object (the observed)?",
+    "question": "Do you believe that at the deepest level, there's no separation between you and what you observe?",
     "clarification": "This is a core tenet of non-dual philosophies, suggesting that the separation between self and world is an illusion.",
     "concepts": [
       {
@@ -585,7 +521,7 @@
   },
   "Physical matter/energy as fundamental": {
     "question": "Do you believe that physical matter and energy are the fundamental building blocks of reality?",
-    "clarification": "This is the foundational principle of materialism, suggesting that all phenomena, including consciousness, are ultimately physical.",
+    "clarification": "Basically that all phenomena, including consciousness, come out of the physical and material realm.",
     "concepts": [
       {
         "tag": "materialism",
@@ -605,7 +541,6 @@
         "Consciousness fundamental to reality",
         "Consciousness creates reality",
         "Reality is energy/vibrational",
-        "Primordial awareness as ground of being",
         "Consciously generated reality",
         "All things possess consciousness",
         "Consciousness in all matter"
@@ -624,8 +559,8 @@
     "id": 32
   },
   "Consciousness emerges from physical processes": {
-    "question": "Do you believe that consciousness is an emergent property of complex physical processes, like brain activity?",
-    "clarification": "This is the standard materialist view, suggesting the mind arises from the brain's complexity without any non-physical component.",
+    "question": "Do you believe consciousness comes from brain activity alone?",
+    "clarification": "The mind arises from the brain's complexity without any non-physical component.",
     "concepts": [
       {
         "tag": "materialism",
@@ -648,8 +583,12 @@
   },
   "Reality is energy/vibrational": {
     "question": "Do you conceive of reality as being fundamentally composed of energy or vibrations?",
-    "clarification": "This view, common in New Age and some esoteric systems, sees different levels of reality corresponding to different vibrational frequencies.",
+    "clarification": "This view sees different levels of reality corresponding to different vibrational frequencies.",
     "concepts": [
+      {
+        "tag": "materialism",
+        "polarity": "pro"
+      },
       {
         "tag": "new age",
         "polarity": "pro"
@@ -657,11 +596,9 @@
     ],
     "excludes": {
       "questions": [
-        "Physical matter/energy as fundamental",
         "Consciousness fundamental to reality"
       ],
       "concepts": [
-        "materialism",
         "consciousness"
       ],
       "cosmologies": []
@@ -669,49 +606,14 @@
     "id": 34
   },
   "All diversity ultimately illusory": {
-    "question": "Do you believe that the apparent diversity and separateness of things in the world is ultimately an illusion?",
-    "clarification": "This monistic view suggests that, at a fundamental level, everything is part of a single, undifferentiated whole.",
-    "concepts": [
-      {
-        "tag": "consciousness",
-        "polarity": "pro"
-      },
-      {
-        "tag": "materialism",
-        "polarity": "con"
-      },
-      {
-        "tag": "dualism",
-        "polarity": "con"
-      }
-    ],
+    "question": "Do you believe that the apparent diversity and separateness of things in the world is ultimately an illusion? That all is one?",
+    "clarification": "This view suggests that everything is part of a single, undifferentiated whole.",
+    "concepts": [],
     "id": 35
-  },
-  "Mental and physical as aspects of neutral substance": {
-    "question": "Do you believe that the mental and the physical are two aspects of a single, underlying neutral substance?",
-    "clarification": "This view proposes that the ultimate reality is neither mental nor physical, but something that can appear as either.",
-    "concepts": [
-      {
-        "tag": "materialism",
-        "polarity": "con"
-      },
-      {
-        "tag": "consciousness",
-        "polarity": "con"
-      }
-    ],
-    "excludes": {
-      "questions": [
-        "Reality is energy/vibrational"
-      ],
-      "concepts": [],
-      "cosmologies": []
-    },
-    "id": 36
   },
   "Multiple universes exist simultaneously": {
     "question": "Do you believe that our universe is just one of many universes that exist simultaneously?",
-    "clarification": "This is the core idea of the Multiverse, suggesting a larger cosmic reality containing many parallel worlds.",
+    "clarification": "This is a view that our universe exists within a larger cosmic reality containing many universes, a multiverse even.",
     "concepts": [
       {
         "tag": "multiverse",
@@ -722,7 +624,7 @@
   },
   "Reality branches with every quantum event": {
     "question": "Do you believe that reality constantly branches into parallel universes with every quantum event?",
-    "clarification": "This is the 'Many-Worlds Interpretation' of quantum physics, where every possible outcome of an event occurs in a separate universe.",
+    "clarification": "This is the belief that every possible outcome of an event occurs in a separate universes, and that we exist by traveling down only one path of almost infinite realities that exist simultaneously.",
     "concepts": [
       {
         "tag": "multiverse",
@@ -770,7 +672,7 @@
   },
   "Physical world is illusion": {
     "question": "Do you believe the physical world as we perceive it is fundamentally an illusion?",
-    "clarification": "This view (known as Maya in some Eastern traditions) suggests that our everyday reality conceals a more fundamental, true reality.",
+    "clarification": "This view suggests that our everyday reality conceals a more fundamental, true reality.",
     "concepts": [
       {
         "tag": "consciousness",
@@ -789,7 +691,7 @@
   },
   "Reality divided between spirit and matter": {
     "question": "Do you believe that reality is fundamentally divided into two distinct substances: spirit and matter?",
-    "clarification": "This is the core of dualism, which posits a fundamental separation between the mental/spiritual realm and the physical realm.",
+    "clarification": "This posits a fundamental separation between the mental/spiritual realm and the physical realm. The dualism of heaven and earth, body and mind, etc.",
     "concepts": [
       {
         "tag": "dualism",
@@ -808,7 +710,7 @@
   },
   "Reality as simulation/program": {
     "question": "Do you believe it's likely that our reality is a simulation or a computer program?",
-    "clarification": "This hypothesis suggests our universe is an artificial construct created by a more advanced intelligence.",
+    "clarification": "This hypothesis suggests our universe is an artificial construct created by a more advanced intelligence, and that one day we will create a simulation capable of building universes like our own.",
     "concepts": [
       {
         "tag": "simulation",
@@ -819,7 +721,6 @@
       "questions": [
         "Consciousness fundamental to reality",
         "Consciously generated reality",
-        "Primordial awareness as ground of being",
         "Natural laws sufficient without intervention"
       ],
       "concepts": [
@@ -833,19 +734,23 @@
     "id": 44
   },
   "Created by advanced beings": {
-    "question": "Do you believe our universe was created by technologically advanced beings rather than a god?",
+    "question": "Do you believe our universe was created by technologically advanced aliens rather than a god?",
     "clarification": "This frames the simulation hypothesis in purely scientific or technological terms, possibly involving our own descendants.",
     "concepts": [
       {
         "tag": "simulation",
+        "polarity": "pro"
+      },
+      {
+        "tag": "ancient aliens",
         "polarity": "pro"
       }
     ],
     "id": 45
   },
   "Consciously generated reality": {
-    "question": "Do you believe that reality is consciously generated, more like a shared dream than a computer program?",
-    "clarification": "This view blends idealism with the simulation hypothesis, suggesting reality is a mental construct generated by consciousness.",
+    "question": "Do you believe that reality is a simulation, but that it's consciously generated by an advanced mind instead of a computer program?",
+    "clarification": "This view suggesting reality is a mental construct generated by consciousness, like a giant shared dream.",
     "concepts": [
       {
         "tag": "simulation",
@@ -862,8 +767,7 @@
     ],
     "excludes": {
       "questions": [
-        "Physical matter/energy as fundamental",
-        "Reality as simulation/program"
+        "Physical matter/energy as fundamental"
       ],
       "concepts": [
         "materialism"
@@ -879,10 +783,6 @@
       {
         "tag": "simulation",
         "polarity": "pro"
-      },
-      {
-        "tag": "abstract god",
-        "polarity": "con"
       },
       {
         "tag": "traditional god",
@@ -904,7 +804,7 @@
   },
   "Personal truth over dogma": {
     "question": "Do you prioritize your personal truth over current scientific consensus?",
-    "clarification": "This suggests you believe that truth is subjective and found through individual exploration rather than from an external authoritative experts.",
+    "clarification": "This suggests you believe that truth is found through individual exploration and that it's not safe to take the word of external authoritative experts.",
     "concepts": [
       {
         "tag": "science",
@@ -918,8 +818,8 @@
     "id": 49
   },
   "Scientific consensus on cosmology accepted": {
-    "question": "Do you generally accept the scientific consensus on cosmology, such as the Big Bang and an ancient universe?",
-    "clarification": "This indicates an alignment with mainstream scientific understanding as the most reliable way of knowing about the cosmos.",
+    "question": "Do you generally accept the scientific consensus on the origins of the universe, such as the Big Bang and inflation?",
+    "clarification": "This indicates an alignment with current scientific understanding as the most reliable way of knowing about the cosmos.",
     "concepts": [
       {
         "tag": "conspiracy",
@@ -951,7 +851,7 @@
     "id": 50
   },
   "Current scientific paradigm fundamentally flawed": {
-    "question": "Do you believe the current scientific paradigm is fundamentally flawed or incomplete?",
+    "question": "Do you believe the current scientific paradigm is fundamentally flawed or incomplete, in some cases intentionally?",
     "clarification": "This suggests that mainstream science is missing major aspects of reality, such as consciousness or other dimensions.",
     "concepts": [
       {
@@ -966,8 +866,8 @@
     "id": 51
   },
   "Direct experience over doctrine": {
-    "question": "Do you value direct, personal experience over doctrine or scripture as a path to truth?",
-    "clarification": "This emphasizes an empirical approach to spirituality, where what you personally experience is the highest authority.",
+    "question": "Do you value direct, personal experience over religious doctrine and scripture as a path to truth?",
+    "clarification": "This emphasizes an empirical approach to understanding, where what you personally experience is the highest authority.",
     "concepts": [
       {
         "tag": "science",
@@ -982,12 +882,8 @@
   },
   "Direct mystical experience over doctrine": {
     "question": "Do you believe that direct mystical experience is a more reliable path to truth than religious doctrine?",
-    "clarification": "This prioritizes non-ordinary states of consciousness (like unity, ego-dissolution) as the primary source of spiritual insight.",
+    "clarification": "This prioritizes non-ordinary states of consciousness (like unity, ego-dissolution) as the most trustworthy source of spiritual insight.",
     "concepts": [
-      {
-        "tag": "science",
-        "polarity": "con"
-      },
       {
         "tag": "mysticism",
         "polarity": "pro"
@@ -996,7 +892,7 @@
     "id": 53
   },
   "Metaphysical certainty rejected": {
-    "question": "Do you believe that metaphysical certainty is impossible to achieve?",
+    "question": "Do you believe we can never be 100% sure about the big questions?",
     "clarification": "This suggests that final, absolute answers about the ultimate nature of reality are fundamentally unattainable.",
     "concepts": [
       {
@@ -1005,11 +901,11 @@
       },
       {
         "tag": "mysticism",
-        "polarity": "con"
+        "polarity": "pro"
       },
       {
         "tag": "new age",
-        "polarity": "con"
+        "polarity": "pro"
       }
     ],
     "positive_concept": "Metaphysical certainty is possible to attain.",
@@ -1022,6 +918,10 @@
       {
         "tag": "science",
         "polarity": "con"
+      },
+      {
+        "tag": "conspiracy",
+        "polarity": "pro"
       },
       {
         "tag": "new age",
@@ -1061,7 +961,7 @@
     "id": 57
   },
   "Multi-Perspectival Truth": {
-    "question": "Do you believe that truth is multi-perspectival, with different viewpoints offering valid but partial insights?",
+    "question": "Do you believe different viewpoints can all be right even if they appear very different or contradictory on the surface?",
     "clarification": "This view suggests that reality is too complex to be captured by a single, absolute perspective.",
     "concepts": [
       {
@@ -1083,8 +983,8 @@
     "id": 59
   },
   "Openness to multiple alternative explanations": {
-    "question": "Do you maintain an openness to multiple alternative explanations for phenomena, both mainstream and unconventional?",
-    "clarification": "This indicates a skeptical but non-dogmatic approach, willing to entertain various possibilities without committing to one.",
+    "question": "Do you maintain an openness to multiple alternative explanations for why reality is the way it is, both mainstream and unconventional?",
+    "clarification": "This indicates a willingness to entertain various possibilities without having to fully commit to one.",
     "concepts": [
       {
         "tag": "uncertainty",
@@ -1098,8 +998,8 @@
     "id": 60
   },
   "All phenomena lack inherent existence": {
-    "question": "Do you believe that all phenomena lack inherent, independent existence?",
-    "clarification": "This view suggests that things lack independent existence and only exist interdependently.",
+    "question": "Do you believe that the ultimate reality of the universe is emptiness and one-ness?",
+    "clarification": "This view suggests that things lack independent existence and phenomena only exist interdependently.",
     "concepts": [
       {
         "tag": "consciousness",
@@ -1113,8 +1013,8 @@
     "id": 61
   },
   "Self and world not separate": {
-    "question": "Do you believe that your self and the world are not fundamentally separate?",
-    "clarification": "This non-dual perspective suggests that the feeling of being a separate 'I' inside a body is an illusion.",
+    "question": "Do you believe that your self and the universe are not fundamentally separate?",
+    "clarification": "This perspective suggests that the feeling of being a separate 'I' inside a body is an illusion.",
     "concepts": [
       {
         "tag": "consciousness",
@@ -1131,25 +1031,6 @@
     ],
     "id": 62
   },
-  "True self is identical with ultimate reality": {
-    "question": "Do you believe your truest self is identical with ultimate reality?",
-    "clarification": "This view suggests that your deepest identity is the totality of existence itself.",
-    "concepts": [
-      {
-        "tag": "consciousness",
-        "polarity": "pro"
-      },
-      {
-        "tag": "dualism",
-        "polarity": "con"
-      },
-      {
-        "tag": "abstract god",
-        "polarity": "pro"
-      }
-    ],
-    "id": 63
-  },
   "Spontaneous Emergence": {
     "question": "Do you believe that the universe and its contents emerge spontaneously without a creator or external cause?",
     "clarification": "This view suggests that reality unfolds naturally and of its own accord without external causation.",
@@ -1161,17 +1042,13 @@
       {
         "tag": "abstract god",
         "polarity": "con"
-      },
-      {
-        "tag": "uncertainty",
-        "polarity": "pro"
       }
     ],
     "id": 64
   },
   "Vital Force Cosmology": {
-    "question": "Do you believe the universe is animated by a fundamental vital force or life energy?",
-    "clarification": "This concept (like '\u00e0\u1e63\u1eb9' or 'nyama' in African traditions) sees a pervasive life energy flowing through all things.",
+    "question": "Do you believe there's a vital life force flowing through everything?",
+    "clarification": "This concept sees a pervasive life energy flowing through all things.",
     "concepts": [
       {
         "tag": "animism",
@@ -1189,7 +1066,7 @@
     "id": 65
   },
   "Human-Cosmic Mirroring": {
-    "question": "Do you believe that the human being is a microcosm that mirrors the patterns of the macrocosmic universe?",
+    "question": "Do you believe humans are like mini-universes that reflect the bigger universe?",
     "clarification": "This esoteric principle ('as above, so below') suggests that by understanding ourselves, we can understand the cosmos.",
     "concepts": [
       {
@@ -1210,10 +1087,6 @@
       {
         "tag": "flat earth",
         "polarity": "con"
-      },
-      {
-        "tag": "materialism",
-        "polarity": "pro"
       },
       {
         "tag": "science",
@@ -1241,10 +1114,6 @@
       {
         "tag": "flat earth",
         "polarity": "pro"
-      },
-      {
-        "tag": "materialism",
-        "polarity": "con"
       },
       {
         "tag": "science",
@@ -1291,25 +1160,24 @@
     "id": 69
   },
   "Ancient monuments built by humans": {
-    "question": "Do you believe that ancient monuments like the pyramids were built by humans?",
-    "clarification": "As opposed to them being built by ancient aliens, for example.",
+    "question": "Do you believe that the pyramids were built by humans?",
+    "clarification": "As opposed to them, and other ancient monuments, being built by ancient aliens, for example.",
     "concepts": [
       {
         "tag": "ancient aliens",
         "polarity": "con"
+      },
+      {
+        "tag": "conspiracy",
+        "polarity": "pro"
       }
     ],
     "id": 70
   },
   "Religious figures were human": {
-    "question": "Do you believe that major religious figures (like Jesus, Buddha, Muhammad) were historical human beings?",
-    "clarification": "This view accepts the historical existence of these figures without necessarily affirming their divine status.",
-    "concepts": [
-      {
-        "tag": "ancient aliens",
-        "polarity": "con"
-      }
-    ],
+    "question": "Do you believe that major religious figures (like Jesus, Buddha, Muhammad) were real people that existed?",
+    "clarification": "This view accepts the historical existence of these figures without necessarily affirming or denying their divine status.",
+    "concepts": [],
     "id": 71
   },
   "Major religions accurate in essence": {
@@ -1325,7 +1193,7 @@
   },
   "Aliens intervened in human evolution": {
     "question": "Do you believe that extraterrestrial beings have significantly influenced human history and/or evolution?",
-    "clarification": "This encompasses Ancient Astronaut Theory including alien genetic intervention in human evolution and guidance of ancient civilizations.",
+    "clarification": "This view believes that there was intervention in human evolution and guidance of ancient civilizations.",
     "concepts": [
       {
         "tag": "ancient aliens",
@@ -1354,12 +1222,16 @@
       {
         "tag": "ancient aliens",
         "polarity": "pro"
+      },
+      {
+        "tag": "conspiracy",
+        "polarity": "pro"
       }
     ],
     "id": 74
   },
   "Mainstream history incomplete/manipulated": {
-    "question": "Do you believe that mainstream historical accounts are significantly incomplete or have been deliberately manipulated?",
+    "question": "Do you believe that mainstream historical accounts have been deliberately manipulated or altered in order to hide information and control people?",
     "clarification": "This suggests that powerful groups have suppressed or altered history to serve their own agendas.",
     "concepts": [
       {
@@ -1381,8 +1253,8 @@
     "id": 76
   },
   "Knowledge tied to specific places": {
-    "question": "Do you believe that true knowledge is deeply tied to specific places and ecosystems?",
-    "clarification": "This is a core principle of many Indigenous worldviews, suggesting that wisdom arises from a long-term relationship with a particular land.",
+    "question": "Do you believe that true wisdom is deeply tied to specific places and ecosystems?",
+    "clarification": "This view suggests that wisdom arises from a long-term relationship with a particular land.",
     "concepts": [
       {
         "tag": "animism",
@@ -1393,21 +1265,17 @@
   },
   "Non-human entities as persons with agency": {
     "question": "Do you view non-human entities (like animals, plants, rivers) as 'persons' with their own agency and consciousness?",
-    "clarification": "This animistic and Indigenous perspective sees the world as a community of beings, not a collection of objects.",
+    "clarification": "This perspective sees the world as a community of beings, not a collection of objects.",
     "concepts": [
       {
         "tag": "animism",
-        "polarity": "pro"
-      },
-      {
-        "tag": "consciousness",
         "polarity": "pro"
       }
     ],
     "id": 78
   },
   "Ceremonies maintain cosmic balance": {
-    "question": "Do you believe that human ceremonies and rituals can play a role in maintaining cosmic balance?",
+    "question": "Do you believe that ceremonies and rituals can play a role in maintaining cosmic balance and general livelihood?",
     "clarification": "This view sees ceremony not as merely symbolic, but as a vital, participatory act that helps sustain the world.",
     "concepts": [
       {
@@ -1443,7 +1311,7 @@
     "id": 81
   },
   "Material world created by flawed being": {
-    "question": "Do you believe the material world was created by a flawed or lesser being, not the true, ultimate God?",
+    "question": "Do you believe the material world was created by a flawed or lesser being, not the true, ultimate God, with the goal of deceiving humans?",
     "clarification": "This view sees the material world as a kind of prison for the divine spark within us.",
     "concepts": [
       {
@@ -1468,7 +1336,7 @@
     "id": 82
   },
   "Salvation through secret knowledge": {
-    "question": "Do you believe that salvation or liberation is achieved through acquiring secret, esoteric knowledge (gnosis)?",
+    "question": "Do you believe you need special secret knowledge to be spiritually free?",
     "clarification": "This view prioritizes inner knowing over faith or good works as the path to spiritual freedom.",
     "concepts": [
       {

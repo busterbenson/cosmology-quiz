@@ -16,9 +16,21 @@
 
       <!-- Results Display -->
       <div v-else-if="results.length > 0" class="space-y-8">
-        <h1 class="text-4xl font-bold text-center bg-gradient-to-r from-cosmic-gold via-cosmic-purple to-cosmic-blue bg-clip-text text-transparent">
-          Your Cosmology
-        </h1>
+        <div class="text-center">
+          <a href="/" class="inline-block">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-cosmic-gold via-cosmic-purple to-cosmic-blue bg-clip-text text-transparent">
+              Your Cosmology Results
+            </h1>
+          </a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="text-center space-y-4 -mt-4">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button @click="retakeQuiz" class="cosmic-button">Retake Quiz</button>
+            <button @click="copyPermalink" class="cosmic-button-outline">{{ copyButtonText }}</button>
+          </div>
+        </div>
         
         <!-- Top Section Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
@@ -114,73 +126,52 @@
               </p>
             </div>
           </div>
-          <div v-if="Object.keys(quizEngine.quizState.value.convictionProfile).length > 0" class="cosmic-card p-6 self-start">
-              <div class="flex justify-between items-center mb-3">
-                <h3 class="text-lg font-bold text-white">Your Cosmological Profile</h3>
-                <div class="text-xs text-gray-400">
-                  <span class="text-red-300">●</span> Against · <span class="text-green-300">●</span> For
+          <div class="space-y-6">
+            <div v-if="Object.keys(quizEngine.quizState.value.convictionProfile).length > 0" class="cosmic-card p-6 self-start">
+                <div class="flex justify-between items-center mb-3">
+                  <h3 class="text-lg font-bold text-white">Your Cosmological Profile</h3>
+                  <div class="text-xs text-gray-400">
+                    <span class="text-red-300">●</span> Against · <span class="text-green-300">●</span> For
+                  </div>
                 </div>
-              </div>
-              <div class="space-y-1.5">
-                <div v-for="item in orderedConvictionProfile" :key="item.concept" class="bg-white/5 rounded px-3 py-2">
-                  <div class="flex items-center justify-between">
-                    <span class="capitalize text-sm font-medium flex-1 min-w-0 truncate"
+                <div class="space-y-1.5">
+                  <div v-for="item in orderedConvictionProfile" :key="item.concept" class="bg-white/5 rounded px-3 py-2">
+                    <div class="flex items-center justify-between">
+                      <span class="capitalize text-sm font-medium flex-1 min-w-0 truncate"
+                            :class="{
+                              'text-green-400': item.netScore > 0,
+                              'text-red-400': item.netScore < 0,
+                              'text-gray-400': item.netScore === 0
+                            }">
+                        {{ item.concept }}
+                      </span>
+                      <div class="flex items-center space-x-2 ml-3">
+                        <BiDirectionalDots 
+                          :pro="item.counts.pro" 
+                          :con="item.counts.con" 
+                          :max-strength="maxConvictionStrength" 
+                        />
+                        <span 
+                          class="text-xs font-mono w-6 text-right font-bold"
                           :class="{
                             'text-green-400': item.netScore > 0,
                             'text-red-400': item.netScore < 0,
                             'text-gray-400': item.netScore === 0
-                          }">
-                      {{ item.concept }}
-                    </span>
-                    <div class="flex items-center space-x-2 ml-3">
-                      <BiDirectionalDots 
-                        :pro="item.counts.pro" 
-                        :con="item.counts.con" 
-                        :max-strength="maxConvictionStrength" 
-                      />
-                      <span 
-                        class="text-xs font-mono w-6 text-right font-bold"
-                        :class="{
-                          'text-green-400': item.netScore > 0,
-                          'text-red-400': item.netScore < 0,
-                          'text-gray-400': item.netScore === 0
-                        }"
-                      >
-                        {{ item.netScore > 0 ? '+' : '' }}{{ item.netScore }}
-                      </span>
+                          }"
+                        >
+                          {{ item.netScore > 0 ? '+' : '' }}{{ item.netScore }}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
+            <SaveResultsForm :results-url="generatePermalink()" />
           </div>
         </div>
 
         <!-- Action Buttons -->
-        <div class="text-center space-y-4">
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <button @click="retakeQuiz" class="cosmic-button">Retake Quiz</button>
-            <button @click="shareResults" class="cosmic-button-secondary">Share Results</button>
-            <button @click="copyPermalink" class="cosmic-button-outline">Copy Permalink</button>
-          </div>
-          <div class="text-sm text-gray-400">
-            Results based on {{ quizEngine.quizState.value.questionNumber }} questions
-          </div>
-          <div v-if="showPermalink" class="mt-6 p-4 bg-white/5 rounded-lg border border-cosmic-gold/30 max-w-lg mx-auto">
-            <div class="text-sm text-gray-300 mb-2">Permalink to your results:</div>
-            <div class="flex items-center gap-2">
-              <input 
-                ref="permalinkInput"
-                :value="generatePermalink()" 
-                readonly 
-                class="flex-1 px-3 py-2 bg-white/10 border border-gray-600 rounded text-sm text-white"
-                @click="selectPermalinkText"
-              />
-              <button @click="copyPermalinkToClipboard" class="px-3 py-2 bg-cosmic-purple hover:bg-cosmic-purple/80 rounded text-sm text-white transition-colors">
-                Copy
-              </button>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
 
@@ -198,6 +189,7 @@ import { ref, onMounted, computed, nextTick } from 'vue'
 import CosmologyConstellation from '~/components/quiz/CosmologyConstellation.vue'
 import CosmologyDetailsModal from '~/components/results/CosmologyDetailsModal.vue'
 import BiDirectionalDots from '~/components/common/BiDirectionalDots.vue'
+import SaveResultsForm from '~/components/results/SaveResultsForm.vue'
 import type { QuizResult } from '~/types'
 
 useHead({ title: 'Your Cosmology Quiz Results' })
@@ -210,8 +202,7 @@ const isLoading = ref(true)
 const error = ref<string | null>(null)
 const results = ref<QuizResult[]>([])
 const favoriteCosmology = ref<string | null>(null)
-const showPermalink = ref(false)
-const permalinkInput = ref<HTMLInputElement | null>(null)
+const copyButtonText = ref('Copy Permalink')
 
 const isModalOpen = ref(false)
 const selectedCosmology = ref<QuizResult | null>(null)
@@ -360,22 +351,13 @@ const shareResults = async () => {
   }
 }
 
-const copyPermalink = () => {
-  showPermalink.value = !showPermalink.value
-  if (showPermalink.value) {
-    nextTick(() => {
-      selectPermalinkText()
-    })
-  }
-}
-
-const selectPermalinkText = () => {
-  permalinkInput.value?.select()
-}
-
-const copyPermalinkToClipboard = async () => {
+const copyPermalink = async () => {
   const permalinkUrl = generatePermalink()
   await copyToClipboard(permalinkUrl)
+  copyButtonText.value = 'Copied!'
+  setTimeout(() => {
+    copyButtonText.value = 'Copy Permalink'
+  }, 2000)
 }
 
 const reconstructQuizFromPermalink = async (answersParam: string) => {
